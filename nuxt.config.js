@@ -32,7 +32,10 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: "~/plugins/vueMask.js" }],
+  plugins: [
+    { src: "~/plugins/vueMask.js" },
+    { src: "~/plugins/baseComponent.js" },
+  ],
   /*
    ** Nuxt.js dev-modules
    */

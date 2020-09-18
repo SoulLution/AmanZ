@@ -3,12 +3,12 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _bf5e5df6 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
-const _670967ea = () => interopDefault(import('../pages/registrate.vue' /* webpackChunkName: "pages/registrate" */))
-const _7f6b9beb = () => interopDefault(import('../pages/reset.vue' /* webpackChunkName: "pages/reset" */))
-const _68478e06 = () => interopDefault(import('../pages/resetpassword.vue' /* webpackChunkName: "pages/resetpassword" */))
-const _2ceabb2f = () => interopDefault(import('../pages/verification.vue' /* webpackChunkName: "pages/verification" */))
-const _52ada424 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _6de47927 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
+const _05838508 = () => interopDefault(import('../pages/registrate.vue' /* webpackChunkName: "pages/registrate" */))
+const _4cff440d = () => interopDefault(import('../pages/reset.vue' /* webpackChunkName: "pages/reset" */))
+const _e66c17b0 = () => interopDefault(import('../pages/resetpassword.vue' /* webpackChunkName: "pages/resetpassword" */))
+const _155208cd = () => interopDefault(import('../pages/verification.vue' /* webpackChunkName: "pages/verification" */))
+const _b78653e0 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -28,27 +28,27 @@ export const routerOptions = {
 
   routes: [{
     path: "/login",
-    component: _bf5e5df6,
+    component: _6de47927,
     name: "login"
   }, {
     path: "/registrate",
-    component: _670967ea,
+    component: _05838508,
     name: "registrate"
   }, {
     path: "/reset",
-    component: _7f6b9beb,
+    component: _4cff440d,
     name: "reset"
   }, {
     path: "/resetpassword",
-    component: _68478e06,
+    component: _e66c17b0,
     name: "resetpassword"
   }, {
     path: "/verification",
-    component: _2ceabb2f,
+    component: _155208cd,
     name: "verification"
   }, {
     path: "/",
-    component: _52ada424,
+    component: _b78653e0,
     name: "index"
   }],
 

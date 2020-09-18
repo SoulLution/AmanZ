@@ -2,43 +2,43 @@
   {
     "name": "login",
     "path": "/login",
-    "component": "/var/www/dev_AmanZ/pages/login.vue",
+    "component": "/home/vitaliy/Documents/AmanZ/pages/login.vue",
     "chunkName": "pages/login",
-    "_name": "_bf5e5df6"
+    "_name": "_6de47927"
   },
   {
     "name": "registrate",
     "path": "/registrate",
-    "component": "/var/www/dev_AmanZ/pages/registrate.vue",
+    "component": "/home/vitaliy/Documents/AmanZ/pages/registrate.vue",
     "chunkName": "pages/registrate",
-    "_name": "_670967ea"
+    "_name": "_05838508"
   },
   {
     "name": "reset",
     "path": "/reset",
-    "component": "/var/www/dev_AmanZ/pages/reset.vue",
+    "component": "/home/vitaliy/Documents/AmanZ/pages/reset.vue",
     "chunkName": "pages/reset",
-    "_name": "_7f6b9beb"
+    "_name": "_4cff440d"
   },
   {
     "name": "resetpassword",
     "path": "/resetpassword",
-    "component": "/var/www/dev_AmanZ/pages/resetpassword.vue",
+    "component": "/home/vitaliy/Documents/AmanZ/pages/resetpassword.vue",
     "chunkName": "pages/resetpassword",
-    "_name": "_68478e06"
+    "_name": "_e66c17b0"
   },
   {
     "name": "verification",
     "path": "/verification",
-    "component": "/var/www/dev_AmanZ/pages/verification.vue",
+    "component": "/home/vitaliy/Documents/AmanZ/pages/verification.vue",
     "chunkName": "pages/verification",
-    "_name": "_2ceabb2f"
+    "_name": "_155208cd"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/var/www/dev_AmanZ/pages/index.vue",
+    "component": "/home/vitaliy/Documents/AmanZ/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_52ada424"
+    "_name": "_b78653e0"
   }
 ]
