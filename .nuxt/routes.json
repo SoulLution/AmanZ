@@ -1,0 +1,44 @@
+[
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/var/www/dev_AmanZ/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_bf5e5df6"
+  },
+  {
+    "name": "registrate",
+    "path": "/registrate",
+    "component": "/var/www/dev_AmanZ/pages/registrate.vue",
+    "chunkName": "pages/registrate",
+    "_name": "_670967ea"
+  },
+  {
+    "name": "reset",
+    "path": "/reset",
+    "component": "/var/www/dev_AmanZ/pages/reset.vue",
+    "chunkName": "pages/reset",
+    "_name": "_7f6b9beb"
+  },
+  {
+    "name": "resetpassword",
+    "path": "/resetpassword",
+    "component": "/var/www/dev_AmanZ/pages/resetpassword.vue",
+    "chunkName": "pages/resetpassword",
+    "_name": "_68478e06"
+  },
+  {
+    "name": "verification",
+    "path": "/verification",
+    "component": "/var/www/dev_AmanZ/pages/verification.vue",
+    "chunkName": "pages/verification",
+    "_name": "_2ceabb2f"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/var/www/dev_AmanZ/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_52ada424"
+  }
+]
