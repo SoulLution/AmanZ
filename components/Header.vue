@@ -1,10 +1,24 @@
 <template>
   <div class="header">
-    <div class="content header-content">
-      <nuxt-link to="/" class="logo"><img src="@/static/logo.png" /></nuxt-link>
+    <div class="content justify-between header-content">
+      <div class="flex justify-start">
+        <nuxt-link to="/" class="logo">
+          <img src="@/static/logo.png" />
+        </nuxt-link>
+        <nav class="navigation">
+          <ul>
+            <li v-for="link in links" :key="link.src">
+              <nuxt-link :to="link.src">
+                <img :src="link.img" />
+                <span>{{ link.title }}</span>
+              </nuxt-link>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <nav class="navigation">
         <ul>
-          <li v-for="link in links" :key="link.src">
+          <li v-for="link in regist_links" :key="link.src">
             <nuxt-link :to="link.src">
               <img :src="link.img" />
               <span>{{ link.title }}</span>
@@ -21,21 +35,23 @@ export default {
   data() {
     return {
       sidebar: false,
+      regist_links: [
+        {
+          title: "Войти/Регистрация",
+          img: "sign.svg",
+          src: "/login",
+        },
+      ],
       links: [
         {
           title: "Разделы",
           img: "section.svg",
-          src: "/catalog",
+          src: "/products?search=products",
         },
         {
           title: "Контакты",
           img: "phone.svg",
           src: "/contacts",
-        },
-        {
-          title: "Войти",
-          img: "sign.svg",
-          src: "/login",
         },
       ],
     }
@@ -53,9 +69,6 @@ export default {
 .header {
   height: 100px;
   background-color: $white;
-  &-content {
-    justify-content: space-between;
-  }
 }
 ul {
   list-style-type: none;

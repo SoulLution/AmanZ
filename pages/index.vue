@@ -1,6 +1,6 @@
 <template>
   <div class="index flex-col justify-start pt-0">
-    <div class="search pt-10 pb-12">
+    <div class="search bg-$blue_d pt-10 pb-12">
       <div class="content flex-col items-start">
         <h1 class="content-title text-white m-0">Найдите нужные лекарства</h1>
         <label class="search-inp w-full">
@@ -209,7 +209,6 @@ export default {
   }
 }
 .search {
-  background-color: $blue_d;
   & h1 {
     font-size: 2.5rem;
   }

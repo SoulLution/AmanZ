@@ -7,6 +7,13 @@
     "_name": "_6de47927"
   },
   {
+    "name": "products",
+    "path": "/products",
+    "component": "/home/vitaliy/Documents/AmanZ/pages/products.vue",
+    "chunkName": "pages/products",
+    "_name": "_9f63d6d4"
+  },
+  {
     "name": "registrate",
     "path": "/registrate",
     "component": "/home/vitaliy/Documents/AmanZ/pages/registrate.vue",

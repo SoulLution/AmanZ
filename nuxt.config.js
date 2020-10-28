@@ -50,7 +50,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: "https://back.amanz.kz",
+    baseURL: "https://back.amanz.kz/api",
     credentials: true,
     withCredentials: true,
   },

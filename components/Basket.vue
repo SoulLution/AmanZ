@@ -1,5 +1,5 @@
 <template>
-  <div class="basket content fixed z-10">
+  <div class="basket content fixed z-10 hidden">
     <div class="basket-circle absolute right-8 bottom-8" @click="changeShow()">
       <div class="cursor-pointer p-5 rounded-full bg-white">
         <img src="/shopping-cart.svg" class="z-10" />
