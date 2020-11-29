@@ -10,6 +10,7 @@ module.exports = {
       lg: "1.125rem",
       2.5: "2.5rem",
       1.75: "1.75rem",
+      14: "14px",
     },
     borderRadius: {
       default: "4px",

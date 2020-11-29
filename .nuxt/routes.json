@@ -2,50 +2,43 @@
   {
     "name": "login",
     "path": "/login",
-    "component": "/home/vitaliy/Documents/AmanZ/pages/login.vue",
-    "chunkName": "pages/login",
-    "_name": "_6de47927"
+    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\login.vue",
+    "chunkName": "pages/login"
   },
   {
     "name": "products",
     "path": "/products",
-    "component": "/home/vitaliy/Documents/AmanZ/pages/products.vue",
-    "chunkName": "pages/products",
-    "_name": "_9f63d6d4"
+    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\products.vue",
+    "chunkName": "pages/products"
   },
   {
     "name": "registrate",
     "path": "/registrate",
-    "component": "/home/vitaliy/Documents/AmanZ/pages/registrate.vue",
-    "chunkName": "pages/registrate",
-    "_name": "_05838508"
+    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\registrate.vue",
+    "chunkName": "pages/registrate"
   },
   {
     "name": "reset",
     "path": "/reset",
-    "component": "/home/vitaliy/Documents/AmanZ/pages/reset.vue",
-    "chunkName": "pages/reset",
-    "_name": "_4cff440d"
+    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\reset.vue",
+    "chunkName": "pages/reset"
   },
   {
     "name": "resetpassword",
     "path": "/resetpassword",
-    "component": "/home/vitaliy/Documents/AmanZ/pages/resetpassword.vue",
-    "chunkName": "pages/resetpassword",
-    "_name": "_e66c17b0"
+    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\resetpassword.vue",
+    "chunkName": "pages/resetpassword"
   },
   {
     "name": "verification",
     "path": "/verification",
-    "component": "/home/vitaliy/Documents/AmanZ/pages/verification.vue",
-    "chunkName": "pages/verification",
-    "_name": "_155208cd"
+    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\verification.vue",
+    "chunkName": "pages/verification"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/vitaliy/Documents/AmanZ/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_b78653e0"
+    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]

@@ -24,7 +24,10 @@
 
     <div class="slider bg-white py-8">
       <div class="content flex-row justify-between">
-        <div class="w-1/12 h-full z-10 cursor-pointer" @click="changeSlide(-1)">
+        <div
+          class="w-1/12 h-full z-10 cursor-pointer"
+          @click="changeSlide('slider', -1)"
+        >
           <img src="/main_slider/left_arrow.png" />
         </div>
 
@@ -33,16 +36,69 @@
             v-for="(slide, i) in slider"
             :key="slide.id"
             to="/"
-            class="slide w-1/4 flex flex-col items-center justify-start"
-            :class="checkSliderClass(i)"
+            class="slide w-1/4 flex flex-col items-center justify-start cursor-pointer"
+            :class="checkSliderClass('slider', i)"
           >
-            <img :src="'/main_slider/' + slide.img" />
-            <span>{{ slide.title }}</span>
+            <img :src="slide.image_path" />
+            <span>{{ slide.name }}</span>
           </router-link>
         </div>
 
-        <div class="w-1/12 h-full z-10 cursor-pointer" @click="changeSlide(1)">
+        <div
+          class="w-1/12 h-full z-10 cursor-pointer"
+          @click="changeSlide('slider', 1)"
+        >
           <img src="/main_slider/right_arrow.png" />
+        </div>
+      </div>
+    </div>
+
+    <div class="slider bg-white py-8">
+      <div class="content flex-col items-start">
+        <h2 class="text-$blue_d font-bold text-1.75">Новинки</h2>
+        <div class="flex flex-row w-full justify-between">
+          <div
+            class="w-1/12 h-full z-10 cursor-pointer"
+            @click="changeSlide('products', -1)"
+          >
+            <img src="/main_slider/left_arrow.png" />
+          </div>
+
+          <div class="slides pb-5 w-10/12">
+            <div
+              v-for="(slide, i) in products"
+              :key="slide.id"
+              class="slide w-1/4 flex flex-col items-center justify-start"
+              :class="checkSliderClass('products', i)"
+            >
+              <div class="product_image relative">
+                <img v-if="slide.image_path" :src="slide.image_path" />
+                <img v-else src="no_image.svg" />
+              </div>
+              <span
+                class="truncate w-full text-gray_d"
+                style="margin-top: 1rem"
+              >
+                {{ slide.full_name }}
+              </span>
+              <div
+                class="my-4 border-t border-b border-grey_4 w-full py-4 flex flex-row"
+              >
+                <v-steps v-model="slide.current" :max="slide.remainder" />
+                <span class="whitespace-no-wrap text-14 text-gray_d ml-3">
+                  {{ slide.price }} KZT
+                </span>
+              </div>
+              <img class="cursor-pointer" src="green_card.svg" />
+            </div>
+          </div>
+
+          <div
+            class="w-1/12 h-full z-10 cursor-pointer"
+            @click="changeSlide('products', 1)"
+          >
+            <img src="/main_slider/right_arrow.png" />
+          </div>
         </div>
       </div>
     </div>
@@ -53,77 +109,104 @@
 export default {
   data() {
     return {
-      first_slide: 1,
+      slider_current: 1,
+      products_current: 1,
       slider: [
-        {
-          id: 0,
-          title: "Лекарственные средства",
-          img: "medicine.png",
-        },
-        {
-          id: 1,
-          title: "Лекарственные средства",
-          img: "medicine.png",
-        },
-        {
-          id: 2,
-          title: "Средства гигиены",
-          img: "liquid-soap.png",
-        },
-        {
-          id: 3,
-          title: "Для детей",
-          img: "feeding-bottle.png",
-        },
-        {
-          id: 4,
-          title: "Косметические средства",
-          img: "cosmetics.png",
-        },
-        {
-          id: 5,
-          title: "Медицинская техника",
-          img: "ultrasound-machine.png",
-        },
-        {
-          id: 6,
-          title: "Медицинские товары",
-          img: "first-aid-kit.png",
-        },
-        {
-          id: 7,
-          title: "Ортопедические товары",
-          img: "bandage.png",
-        },
-        {
-          id: 8,
-          title: "Витамины и добавки",
-          img: "vitamin-pill.png",
-        },
-        {
-          id: 9,
-          title: "Мобильность и реабилитация",
-          img: "orthopedic.png",
-        },
+        // {
+        //   id: 0,
+        //   title: "Лекарственные средства",
+        //   img: "medicine.png",
+        // },
+        // {
+        //   id: 1,
+        //   title: "Лекарственные средства",
+        //   img: "medicine.png",
+        // },
+        // {
+        //   id: 2,
+        //   title: "Средства гигиены",
+        //   img: "liquid-soap.png",
+        // },
+        // {
+        //   id: 3,
+        //   title: "Для детей",
+        //   img: "feeding-bottle.png",
+        // },
+        // {
+        //   id: 4,
+        //   title: "Косметические средства",
+        //   img: "cosmetics.png",
+        // },
+        // {
+        //   id: 5,
+        //   title: "Медицинская техника",
+        //   img: "ultrasound-machine.png",
+        // },
+        // {
+        //   id: 6,
+        //   title: "Медицинские товары",
+        //   img: "first-aid-kit.png",
+        // },
+        // {
+        //   id: 7,
+        //   title: "Ортопедические товары",
+        //   img: "bandage.png",
+        // },
+        // {
+        //   id: 8,
+        //   title: "Витамины и добавки",
+        //   img: "vitamin-pill.png",
+        // },
+        // {
+        //   id: 9,
+        //   title: "Мобильность и реабилитация",
+        //   img: "orthopedic.png",
+        // },
       ],
+      products: [],
     }
   },
+  created() {
+    this.getCategories()
+    this.getProducts()
+  },
   methods: {
-    checkSliderClass(index) {
+    getProducts() {
+      this.$axios
+        .post("products", {
+          pagination: {
+            limit: 10,
+            page: 1,
+          },
+        })
+        .then((res) => {
+          let products = res.data.product.map((x) => {
+            return { ...x, current: 1 }
+          })
+          this.products = products.concat(products)
+          console.log(this.products)
+        })
+    },
+    getCategories() {
+      this.$axios.get("category").then((res) => {
+        this.slider = res.data.category
+      })
+    },
+    checkSliderClass(who, index) {
       let end, type
-      type = this.first_slide - 1
-      if (type <= 0) type += this.slider.length - 1
+      type = this[who + "_current"] - 1
+      if (type <= 0) type += this[who].length - 1
       if (index === type) type = 0
       else {
         for (let i = 1; i < 4; i++) {
-          type = this.first_slide + i
-          if (type > this.slider.length - 1) type -= this.slider.length - 1
+          type = this[who + "_current"] + i
+          if (type > this[who].length - 1) type -= this[who].length - 1
           if (index === type) {
             type = i
             break
           } else type = 4
         }
-        if (this.first_slide === index) type = 5
+        if (this[who + "_current"] === index) type = 5
       }
       switch (type) {
         case 0:
@@ -147,11 +230,11 @@ export default {
       }
       return end
     },
-    changeSlide(step) {
-      let now = this.first_slide + step
-      if (now < 1) now = this.slider.length - 1
-      else if (now >= this.slider.length) now = 1
-      this.first_slide = now
+    changeSlide(who, step) {
+      let now = this[who + "_current"] + step
+      if (now < 1) now = this[who].length - 1
+      else if (now >= this[who].length) now = 1
+      this[who + "_current"] = now
     },
   },
 }
@@ -170,16 +253,18 @@ export default {
 }
 .slides {
   position: relative;
-  height: 230px;
+  min-height: 230px;
   padding: 0 15px;
   & > .slide {
     position: absolute;
     left: 0;
     transition: 0.3s;
-    cursor: pointer;
     padding: 1.25rem;
     user-select: none;
     border-radius: 40px;
+    &:first-child {
+      position: relative;
+    }
     &.__left-1 {
       left: -25%;
       opacity: 0;
@@ -229,5 +314,8 @@ export default {
       text-decoration: underline;
     }
   }
+}
+.product_image {
+  height: 230px;
 }
 </style>

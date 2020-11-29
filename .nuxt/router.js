@@ -3,13 +3,13 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _6de47927 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
-const _9f63d6d4 = () => interopDefault(import('../pages/products.vue' /* webpackChunkName: "pages/products" */))
-const _05838508 = () => interopDefault(import('../pages/registrate.vue' /* webpackChunkName: "pages/registrate" */))
-const _4cff440d = () => interopDefault(import('../pages/reset.vue' /* webpackChunkName: "pages/reset" */))
-const _e66c17b0 = () => interopDefault(import('../pages/resetpassword.vue' /* webpackChunkName: "pages/resetpassword" */))
-const _155208cd = () => interopDefault(import('../pages/verification.vue' /* webpackChunkName: "pages/verification" */))
-const _b78653e0 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _0d23f59e = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
+const _6864d768 = () => interopDefault(import('..\\pages\\products.vue' /* webpackChunkName: "pages/products" */))
+const _3f21ef3e = () => interopDefault(import('..\\pages\\registrate.vue' /* webpackChunkName: "pages/registrate" */))
+const _4eee5fd2 = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages/reset" */))
+const _9298539c = () => interopDefault(import('..\\pages\\resetpassword.vue' /* webpackChunkName: "pages/resetpassword" */))
+const _60febd83 = () => interopDefault(import('..\\pages\\verification.vue' /* webpackChunkName: "pages/verification" */))
+const _2fc6621a = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -29,31 +29,31 @@ export const routerOptions = {
 
   routes: [{
     path: "/login",
-    component: _6de47927,
+    component: _0d23f59e,
     name: "login"
   }, {
     path: "/products",
-    component: _9f63d6d4,
+    component: _6864d768,
     name: "products"
   }, {
     path: "/registrate",
-    component: _05838508,
+    component: _3f21ef3e,
     name: "registrate"
   }, {
     path: "/reset",
-    component: _4cff440d,
+    component: _4eee5fd2,
     name: "reset"
   }, {
     path: "/resetpassword",
-    component: _e66c17b0,
+    component: _9298539c,
     name: "resetpassword"
   }, {
     path: "/verification",
-    component: _155208cd,
+    component: _60febd83,
     name: "verification"
   }, {
     path: "/",
-    component: _b78653e0,
+    component: _2fc6621a,
     name: "index"
   }],
 

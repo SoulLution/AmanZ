@@ -4,13 +4,13 @@ import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch,
 
 import NuxtLoading from './components/nuxt-loading.vue'
 
-import '../assets/css/tailwind.css'
+import '..\\assets\\css\\tailwind.css'
 
-import '../assets/scss/main.scss'
+import '..\\assets\\scss\\main.scss'
 
-import '../assets/scss/colors.scss'
+import '..\\assets\\scss\\colors.scss'
 
-import _6f6c098b from '../layouts/default.vue'
+import _6f6c098b from '..\\layouts\\default.vue'
 
 const layouts = { "_default": sanitizeComponent(_6f6c098b) }
 
