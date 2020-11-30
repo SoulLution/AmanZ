@@ -52,7 +52,6 @@
         </div>
       </div>
     </div>
-
     <div class="slider bg-white py-8">
       <div class="content flex-col items-start">
         <h2 class="text-$blue_d font-bold text-1.75">Новинки</h2>
@@ -102,6 +101,48 @@
         </div>
       </div>
     </div>
+
+    <div class="slider bg-white py-8">
+      <div class="content akzii relative justify-start flex-col items-start">
+        <h2 class="text-$blue_d font-bold text-1.75">Акции</h2>
+        <div
+          class="computer bg-$blue_d rounded-xl flex flex-row w-full justify-between"
+        >
+          <div
+            class="w-1/12 h-full z-10 cursor-pointer"
+            @click="changeSlide('akzii', -1)"
+          >
+            <img src="/akzii_arrow.png" style="transform: scale(-1, 1)" />
+          </div>
+
+          <div class="slides pb-5 w-10/12">
+            <div
+              v-for="(slide, i) in akzii"
+              :key="slide.id"
+              class="slide w-full flex flex-col items-center justify-start"
+              :class="checkSliderClass('akzii', i)"
+            >
+              <div class="product_image relative">
+                <img v-if="slide.image_path" :src="slide.image_path" />
+                <img v-else src="akzii_default.png" />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-1/12 h-full z-10 cursor-pointer"
+            @click="changeSlide('akzii', 1)"
+          >
+            <img src="/akzii_arrow.png" />
+          </div>
+        </div>
+        <button
+          class="bg-gray_d text-white py-2 px-10 rounded-xl absolute right-0 bottom-0"
+        >
+          Подробнее
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -109,8 +150,51 @@
 export default {
   data() {
     return {
+      akzii_current: 1,
       slider_current: 1,
       products_current: 1,
+      akzii: [
+        {
+          id: 0,
+          img: "medicine.png",
+        },
+        {
+          id: 1,
+          img: "medicine.png",
+        },
+        {
+          id: 2,
+          img: "liquid-soap.png",
+        },
+        {
+          id: 3,
+          img: "feeding-bottle.png",
+        },
+        {
+          id: 4,
+          img: "cosmetics.png",
+        },
+        {
+          id: 5,
+          img: "ultrasound-machine.png",
+        },
+        {
+          id: 6,
+          img: "first-aid-kit.png",
+        },
+        {
+          id: 7,
+          img: "bandage.png",
+        },
+        {
+          id: 8,
+          img: "vitamin-pill.png",
+        },
+        {
+          id: 9,
+          img: "orthopedic.png",
+        },
+      ],
       slider: [
         // {
         //   id: 0,
@@ -317,5 +401,56 @@ export default {
 }
 .product_image {
   height: 230px;
+}
+.akzii {
+  overflow: visible;
+  background-image: url("/akzii_bg.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  min-height: 512px;
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: url("/akzii_muzhik.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    height: 425px;
+    width: 240px;
+  }
+}
+.computer {
+  justify-content: center;
+  margin-left: 180px;
+  width: calc(100% - 180px);
+  height: 400px;
+  margin-top: -25px;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: #454c5b;
+    bottom: 0;
+    z-index: 0;
+  }
+  &:before {
+    width: 48px;
+    height: 105px;
+  }
+  &:after {
+    width: 285px;
+    height: 16px;
+  }
+  & .slide {
+    min-width: 100%;
+  }
+  & .__left-1,
+  & .__right-1,
+  & .__right-2,
+  & .__right-3 {
+    opacity: 0;
+    position: absolute;
+  }
 }
 </style>
