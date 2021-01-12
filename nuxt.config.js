@@ -3,7 +3,7 @@ module.exports = {
   /*
    ** Headers of the page
    */
-  host: "94.247.128.235",
+  // host: "94.247.128.235",
   port: 8780,
   head: {
     title: process.env.npm_package_name || "",

@@ -3,49 +3,42 @@
     "name": "login",
     "path": "/login",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_72e8e56e"
+    "chunkName": "pages/login"
   },
   {
     "name": "products",
     "path": "/products",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\products.vue",
-    "chunkName": "pages/products",
-    "_name": "_e3fb2222"
+    "chunkName": "pages/products"
   },
   {
     "name": "registrate",
     "path": "/registrate",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\registrate.vue",
-    "chunkName": "pages/registrate",
-    "_name": "_478aad21"
+    "chunkName": "pages/registrate"
   },
   {
     "name": "reset",
     "path": "/reset",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\reset.vue",
-    "chunkName": "pages/reset",
-    "_name": "_5203b054"
+    "chunkName": "pages/reset"
   },
   {
     "name": "resetpassword",
     "path": "/resetpassword",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\resetpassword.vue",
-    "chunkName": "pages/resetpassword",
-    "_name": "_4b9d296f"
+    "chunkName": "pages/resetpassword"
   },
   {
     "name": "verification",
     "path": "/verification",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\verification.vue",
-    "chunkName": "pages/verification",
-    "_name": "_1ba0e2b4"
+    "chunkName": "pages/verification"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\web\\\\AmanZ\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_ad7d7b52"
+    "chunkName": "pages/index"
   }
 ]

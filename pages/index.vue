@@ -71,8 +71,12 @@
               :class="checkSliderClass('products', i)"
             >
               <div class="product_image relative">
-                <img v-if="slide.image_path" :src="slide.image_path" />
-                <img v-else src="no_image.svg" />
+                <img
+                  v-if="slide.image_path"
+                  class="rounded-10"
+                  :src="slide.image_path"
+                />
+                <img v-else class="rounded-10" src="no_image.png" />
               </div>
               <span
                 class="truncate w-full text-gray_d"
@@ -106,34 +110,44 @@
       <div class="content akzii relative justify-start flex-col items-start">
         <h2 class="text-$blue_d font-bold text-1.75">Акции</h2>
         <div
-          class="computer bg-$blue_d rounded-xl flex flex-row w-full justify-between"
+          class="computer bg-$blue_d rounded-xl flex flex-col w-full justify-between"
         >
-          <div
-            class="w-1/12 h-full z-10 cursor-pointer"
-            @click="changeSlide('akzii', -1)"
-          >
-            <img src="/akzii_arrow.png" style="transform: scale(-1, 1)" />
-          </div>
-
-          <div class="slides pb-5 w-10/12">
+          <div class="flex flex-row w-full">
             <div
-              v-for="(slide, i) in akzii"
-              :key="slide.id"
-              class="slide w-full flex flex-col items-center justify-start"
-              :class="checkSliderClass('akzii', i)"
+              class="w-1/12 h-full z-10 cursor-pointer"
+              @click="changeSlide('akzii', -1)"
             >
-              <div class="product_image relative">
-                <img v-if="slide.image_path" :src="slide.image_path" />
-                <img v-else src="akzii_default.png" />
+              <img src="/akzii_arrow.png" style="transform: scale(-1, 1)" />
+            </div>
+
+            <div class="slides pb-5 w-10/12">
+              <div
+                v-for="(slide, i) in akzii"
+                :key="slide.id"
+                class="slide w-full flex flex-col items-center justify-start"
+                :class="checkSliderClass('akzii', i)"
+              >
+                <div class="product_image relative">
+                  <img v-if="slide.image_path" :src="slide.image_path" />
+                  <img v-else src="akzii_default.png" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div
-            class="w-1/12 h-full z-10 cursor-pointer"
-            @click="changeSlide('akzii', 1)"
-          >
-            <img src="/akzii_arrow.png" />
+            <div
+              class="w-1/12 h-full z-10 cursor-pointer"
+              @click="changeSlide('akzii', 1)"
+            >
+              <img src="/akzii_arrow.png" />
+            </div>
+          </div>
+          <div class="computer-taps">
+            <div
+              v-for="i in akzii.length - 1"
+              :key="i"
+              class="cyrcle"
+              :class="{ active: akzii_current === i }"
+            ></div>
           </div>
         </div>
         <button
@@ -253,8 +267,14 @@ export default {
   created() {
     this.getCategories()
     this.getProducts()
+    // this.getAkzii()
   },
   methods: {
+    getAkzii() {
+      this.$axios.get("banner").then((res) => {
+        this.akzii = res.data.banner
+      })
+    },
     getProducts() {
       this.$axios
         .post("products", {
@@ -426,6 +446,23 @@ export default {
   width: calc(100% - 180px);
   height: 400px;
   margin-top: -25px;
+  &-taps {
+    position: absolute;
+    bottom: 120px;
+    & > .cyrcle {
+      max-width: 8px;
+      min-width: 8px;
+      max-height: 8px;
+      min-height: 8px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      background-color: #d6d8dc;
+      transition: 0.3s;
+      &.active {
+        background-color: #39c874;
+      }
+    }
+  }
   &:before,
   &:after {
     content: "";
@@ -451,6 +488,9 @@ export default {
   & .__right-3 {
     opacity: 0;
     position: absolute;
+  }
+  & .product_image > img {
+    border: 10px solid #454c5b;
   }
 }
 </style>

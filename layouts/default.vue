@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <Header />
-    <nuxt class="py-8 min-h-screen" />
+    <Header class="z-10" />
+    <nuxt class="z-0 py-8 min-h-screen" />
     <Basket />
     <Footer />
   </div>

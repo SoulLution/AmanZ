@@ -18,14 +18,18 @@
             <strong>“{{ $route.query.search }}”</strong>
           </span>
         </div>
-        <div class="flex flex-row w-full mt-16">
-          <div class="flex flex-col w-full">
+        <div class="flex flex-row items-start w-full mt-16">
+          <div class="flex flex-col w-2/3">
             <div class="flex flex-row w-full mb-4 justify-between">
-              <div class="flex flex-row">
+              <div class="flex flex-row w-full">
                 <div
-                  class="flex cursor-pointer text-$blue_d hover:text-primary stroke-current"
+                  class="flex relative cursor-pointer bg-white py-4 justify-start px-5 text-$blue_d hover:text-primary stroke-current"
+                  :class="
+                    filter_show ? 'w-full rounded-t-15' : 'rounded-15 w-2/3'
+                  "
+                  @click="filter_show = !filter_show"
                 >
-                  <span class="mr-1 font-medium"> По популярности </span>
+                  <span class="mr-1 font-medium">Фильтр </span>
                   <svg
                     width="16"
                     height="16"
@@ -49,9 +53,59 @@
                       stroke-linejoin="round"
                     />
                   </svg>
+                  <div
+                    class="all_filters absolute w-full left-0"
+                    :class="{ active: filter_show }"
+                    @click.stop=""
+                  >
+                    <div
+                      class="flex-col p-5 bg-white rounded-b-15 w-full cursor-default"
+                    >
+                      <div class="flex flex-row w-full justify-between mb-12">
+                        <div
+                          v-for="filt in filters"
+                          :key="filt.id"
+                          class="filt border-2 rounded-15 p-3 flex flex-row text-$blue_d hover:text-primary whitespace-no-wrap"
+                          :class="
+                            filter.id === filt.id || def_filter.id === filt.id
+                              ? 'border-primary'
+                              : 'border-transparent'
+                          "
+                          @click="def_filter = filt"
+                        >
+                          <img class="mr-4" :src="filt.img" />
+                          <span
+                            :class="
+                              filt.id >= 3
+                                ? 'font-medium text-lg'
+                                : 'font-normal text-14'
+                            "
+                          >
+                            {{ filt.text }}
+                          </span>
+                        </div>
+                      </div>
+                      <div class="flex flex-row justify-end w-full">
+                        <button
+                          class="text-$error mr-7"
+                          @click="changeFilter(false)"
+                        >
+                          Сбросить
+                        </button>
+                        <button
+                          class="rounded-12 py-2 px-12 text-white"
+                          :class="def_filter.id ? 'bg-primary' : 'bg-A9'"
+                          @click="changeFilter(true)"
+                        >
+                          Применить
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div
-                  class="flex flex-row text-$blue_d hover:text-primary cursor-pointer ml-8"
+                  v-if="!filter_show"
+                  class="flex flex-row bg-white rounded-15 py-4 justify-start px-5 w-1/3 text-$blue_d hover:text-primary cursor-pointer ml-8"
                   :class="{
                     'stroke-current': type === 'default',
                     'stroke-current fill-current': type === 'plits',
@@ -150,7 +204,7 @@
                   <span>{{ getTypeName }}</span>
                 </div>
               </div>
-              <v-pagination v-model="page" :max="pagination.total_pages" />
+              <!-- <v-pagination v-model="page" :max="pagination.total_pages" /> -->
             </div>
             <div
               class="flex w-full"
@@ -160,83 +214,139 @@
               }"
             >
               <div
-                v-for="product in products"
+                v-for="(product, i) in products"
                 :key="product.id"
-                class="flex mb-12 justify-start p-5"
+                class="mb-5"
                 :class="{
-                  'w-1/3 flex-col': type === 'plits',
-                  'w-full flex-row h-48': type === 'default',
+                  'w-1/3': type === 'plits',
+                  'pr-10': type === 'plits' && (i + 1) % 3 !== 0,
+                  'w-full h-48': type === 'default',
                 }"
               >
-                <img
-                  src="sign/login.svg"
-                  :class="{
-                    'w-full': type === 'plits',
-                    'w-1/5': type === 'default',
-                  }"
-                />
                 <div
-                  class="flex flex-col items-start"
+                  class="flex w-full justify-start p-5 bg-white rounded-15"
                   :class="{
-                    'w-full': type === 'plits',
-                    'w-3/5': type === 'default',
+                    'flex-col': type === 'plits',
+                    'flex-row': type === 'default',
                   }"
                 >
-                  <h2 class="text-lg">{{ product.full_name }}</h2>
-                  <div class="mt-3 block">
-                    <span class="color-red text-gray-800">Артикул</span>
-                    <a href="#">{{ product.vendor_code }}</a>
-                  </div>
-                  <div class="mt-3 block">
-                    <span class="color-red text-gray-800">Срок годности:</span>
-                    3 года
-                  </div>
-                  <div class="mt-3 block">
-                    <span class="color-red text-gray-800">Производитель:</span>
-                    Байер Фарма АГ, Германия
-                  </div>
-                  <div class="mt-3 block">
-                    <span class="color-red text-gray-800">
-                      Действующие вещества:
-                    </span>
-                    Ацетилсалициловая кислота,Аскорбиновая кислота
-                  </div>
-                </div>
-                <div
-                  class="flex flex-col justify-between h-full items-center py-5"
-                  :class="{
-                    'w-full': type === 'plits',
-                    'w-1/5': type === 'default',
-                  }"
-                >
-                  <div
-                    class="flex w-full"
+                  <img
+                    v-if="product.image_path"
                     :class="{
-                      'flex-row': type === 'plits',
-                      'flex-col': type === 'default',
+                      'w-full': type === 'plits',
+                      'w-1/5': type === 'default',
+                    }"
+                    :src="product.image_path"
+                  />
+                  <img
+                    v-else
+                    :class="{
+                      'w-full': type === 'plits',
+                      'w-1/5': type === 'default',
+                    }"
+                    src="no_image.png"
+                  />
+                  <div
+                    class="flex flex-col items-start"
+                    :class="{
+                      'w-full': type === 'plits',
+                      'w-3/5': type === 'default',
                     }"
                   >
-                    <v-steps
-                      v-model="product.current"
-                      :max="product.remainder"
-                    />
-                    <div class="flex flex-row justify-between w-full mt-4">
-                      <span>Цена:</span><strong>{{ product.price }} KZT</strong>
+                    <h2
+                      class="text-lg w-full"
+                      :class="{
+                        truncate: type === 'plits',
+                      }"
+                    >
+                      {{ product.full_name }}
+                    </h2>
+                    <div class="mt-3 block">
+                      <span class="color-red text-gray-800">Артикул</span>
+                      <a href="#">{{ product.vendor_code }}</a>
+                    </div>
+                    <div class="mt-3 block">
+                      <span class="color-red text-gray-800">
+                        Срок годности:
+                      </span>
+                      3 года
+                    </div>
+                    <div class="mt-3 block">
+                      <span class="color-red text-gray-800">
+                        Производитель:
+                      </span>
+                      Байер Фарма АГ, Германия
+                    </div>
+                    <div v-if="type === 'default'" class="mt-3 block">
+                      <span class="color-red text-gray-800">
+                        Действующие вещества:
+                      </span>
+                      Ацетилсалициловая кислота,Аскорбиновая кислота
                     </div>
                   </div>
-                  <input
-                    type="submit"
-                    class="bg-primary text-white w-full rounded-xl mt-4 mx-2 py-2 text-xs cursor-pointer"
-                    value="Войти"
-                  />
+                  <div
+                    class="flex flex-col justify-between h-full items-center py-5"
+                    :class="{
+                      'w-full': type === 'plits',
+                      'w-1/5': type === 'default',
+                    }"
+                  >
+                    <div
+                      class="flex w-full"
+                      :class="{
+                        'flex-row': type === 'plits',
+                        'flex-col': type === 'default',
+                      }"
+                    >
+                      <v-steps
+                        v-model="product.current"
+                        :max="product.remainder"
+                      />
+                      <div class="flex flex-row justify-between w-full mt-4">
+                        <span>Цена:</span>
+                        <strong>{{ product.price }} KZT</strong>
+                      </div>
+                    </div>
+                    <input
+                      type="submit"
+                      class="bg-primary text-white w-full rounded-xl mt-4 mx-2 py-2 text-xs cursor-pointer"
+                      value="Войти"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="flex flex-col"></div>
+          <div class="flex flex-col mt-18 top-8 sticky px-4 w-1/3 items-start">
+            <div
+              class="flex flex-col w-full bg-white rounded-15 px-3 pb-10 items-start"
+            >
+              <span class="mt-6 mb-5 text-lg font-medium">Фильтр цены</span>
+              <span class="mb-7 text-lg font-medium">
+                {{
+                  price[1] && price[0] !== price[1]
+                    ? "от " + price[0] + "₸" + " до " + price[1] + "₸"
+                    : price[0] + "₸"
+                }}
+              </span>
+              <vue-slider
+                v-model="price"
+                :tooltip="'active'"
+                :tooltip-placement="['top', 'bottom']"
+                width="100%"
+                dot-size="16"
+                :min="0"
+                :max="50000"
+                :interval="500"
+                :tooltip-formatter="formatter"
+              />
+            </div>
+          </div>
         </div>
-        <div class="flex flex-row w-full justify-between">
-          <span>
+        <div
+          class="flex flex-row bg-white p-4 rounded-15 w-2/3 justify-between"
+        >
+          <span class="text-14">
             Показать по
             <span class="text-primary cursor-pointer">{{ limit }}</span>
           </span>
@@ -251,11 +361,42 @@
 export default {
   data() {
     return {
+      filter_show: false,
+      def_filter: {},
+      filter: {
+        id: 1,
+        img: "tenge_up.svg",
+        text: "по возрастанию цены",
+      },
+      filters: [
+        {
+          id: 1,
+          img: "tenge_up.svg",
+          text: "по возрастанию цены",
+        },
+        {
+          id: 2,
+          img: "tenge_down.svg",
+          text: "по убыванию цены",
+        },
+        {
+          id: 3,
+          img: "alphabet_down.svg",
+          text: "A-Z",
+        },
+        {
+          id: 4,
+          img: "alphabet_up.svg",
+          text: "Z-A",
+        },
+      ],
       products: [],
       limit: 10,
       page: 1,
       pagination: {},
+      price: [0, 0],
       type: "default",
+      formatter: (v) => `${("" + v).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`,
     }
   },
   computed: {
@@ -281,6 +422,13 @@ export default {
     this.getProducts()
   },
   methods: {
+    changeFilter(active) {
+      if (this.def_filter.id && active) {
+        this.filter_show = false
+        this.filter = this.def_filter
+      }
+      this.def_filter = {}
+    },
     changeType() {
       if (this.type === "default") this.type = "plits"
       else if (this.type === "plits") this.type = "default"
@@ -310,6 +458,24 @@ export default {
     margin-bottom: 6.25rem;
     &.search {
       margin-bottom: 2.1875rem;
+    }
+  }
+}
+.all_filters {
+  bottom: 0;
+  max-height: 0;
+  transform: translateY(50%);
+  overflow: hidden;
+  transition: 0.3s;
+  &.active {
+    max-height: 100vh;
+    transform: translateY(100%);
+  }
+  & .filt {
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
     }
   }
 }
