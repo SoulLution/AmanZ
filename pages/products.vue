@@ -3,14 +3,14 @@
     <div class="search bg-$blue_d pt-10 pb-12 w-full">
       <div class="content flex-col items-start">
         <h1 class="content-title text-white m-0">
-          <span class="text-2.5">Лекарственные средства</span>
+          <span class="text-2.5">{{ title }}</span>
         </h1>
       </div>
     </div>
     <div class="flex flex-col w-full">
       <div class="content flex-col items-start">
         <div
-          v-if="$route.query.search"
+          v-if="$route.query.search && products.length"
           class="flex justify-start w-full text-1.75"
         >
           <span>
@@ -19,8 +19,14 @@
           </span>
         </div>
         <div class="flex flex-row items-start w-full mt-16">
-          <div class="flex flex-col w-2/3">
-            <div class="flex flex-row w-full mb-4 justify-between">
+          <div
+            class="flex flex-col"
+            :class="$route.query.search ? 'w-full' : 'w-2/3'"
+          >
+            <div
+              v-if="products.length"
+              class="flex flex-row w-full mb-4 justify-between"
+            >
               <div class="flex flex-row w-full">
                 <div
                   class="flex relative cursor-pointer bg-white py-4 justify-start px-5 text-$blue_d hover:text-primary stroke-current"
@@ -207,6 +213,7 @@
               <!-- <v-pagination v-model="page" :max="pagination.total_pages" /> -->
             </div>
             <div
+              v-if="products.length"
               class="flex w-full"
               :class="{
                 'flex-row flex-wrap justify-start': type === 'plits',
@@ -234,7 +241,8 @@
                     v-if="product.image_path"
                     :class="{
                       'w-full': type === 'plits',
-                      'w-1/5': type === 'default',
+                      'w-1/5 pr-2 border-black border-l border-opacity-25':
+                        type === 'default',
                     }"
                     :src="product.image_path"
                   />
@@ -250,7 +258,7 @@
                     class="flex flex-col items-start"
                     :class="{
                       'w-full': type === 'plits',
-                      'w-3/5': type === 'default',
+                      'w-3/5 pl-2': type === 'default',
                     }"
                   >
                     <h2
@@ -316,8 +324,25 @@
                 </div>
               </div>
             </div>
+            <div
+              v-else
+              class="flex flex-col w-full text-1.75 text-gray_d items-start"
+            >
+              <span>
+                К сожалению, ничего не найдено по Вашему запросу
+                <span class="font-semibold">{{
+                  $route.query.search ? $route.query.search : ""
+                }}</span>
+              </span>
+              <div class="flex w-full justify-center mt-12">
+                <img src="no_find.png" />
+              </div>
+            </div>
           </div>
-          <div class="flex flex-col mt-18 top-8 sticky px-4 w-1/3 items-start">
+          <div
+            v-if="!$route.query.search"
+            class="flex flex-col mt-18 top-8 sticky px-4 w-1/3 items-start"
+          >
             <div
               class="flex flex-col w-full bg-white rounded-15 px-3 pb-10 items-start"
             >
@@ -341,10 +366,25 @@
                 :tooltip-formatter="formatter"
               />
             </div>
+            <div
+              v-if="categoryes.length"
+              class="flex flex-col w-full bg-white rounded-15 px-3 py-6 mt-5 items-start"
+            >
+              <div class="textl-xl font-medium">В этой категории:</div>
+              <div v-for="cat in categoryes" :key="cat.id" class="flex py-2">
+                <v-radio
+                  v-model="cat.active"
+                  :checked="cat.active"
+                  :title="cat.name"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div
-          class="flex flex-row bg-white p-4 rounded-15 w-2/3 justify-between"
+          v-if="products.length"
+          class="flex flex-row bg-white p-4 rounded-15 justify-between"
+          :class="$route.query.search ? 'w-full' : 'w-2/3'"
         >
           <span class="text-14">
             Показать по
@@ -363,6 +403,9 @@ export default {
     return {
       filter_show: false,
       def_filter: {},
+      title: "",
+      current_categoryes: [],
+      categoryes: [],
       filter: {
         id: 1,
         img: "tenge_up.svg",
@@ -417,11 +460,63 @@ export default {
     page() {
       this.getProducts()
     },
+    filter() {
+      this.getProducts()
+    },
+    price() {
+      this.getProducts()
+    },
+    categoryes: {
+      handler(newData) {
+        this.current_categoryes = []
+        newData.forEach((x) => {
+          if (x.active) this.current_categoryes.push(x)
+        })
+        if (!this.current_categoryes.legth)
+          this.current_categoryes = JSON.parse(JSON.stringify(newData))
+        this.getProducts()
+      },
+      deep: true,
+    },
+    $route(to) {
+      this.getProducts()
+      this.getTitle()
+      if (to.query.categoryes) {
+        this.getSubCategoryes()
+      }
+    },
   },
   created() {
     this.getProducts()
+    this.getTitle()
+    if (this.$route.query.categoryes) {
+      this.getSubCategoryes()
+    }
   },
   methods: {
+    getTitle() {
+      if (this.$route.query.categoryes)
+        this.$axios.get("/category").then((res) => {
+          this.title = res.data.category.find(
+            (x) => x.id == this.$route.query.categoryes
+          ).name
+        })
+      else this.title = ""
+    },
+    getSubCategoryes() {
+      this.$axios
+        .get("/category/" + this.$route.query.categoryes)
+        .then((res) => {
+          this.categoryes =
+            res.data.category.map((x) => {
+              return {
+                ...x,
+                active: false,
+              }
+            }) || []
+          console.log(this.categoryes)
+        })
+    },
     changeFilter(active) {
       if (this.def_filter.id && active) {
         this.filter_show = false
@@ -434,19 +529,43 @@ export default {
       else if (this.type === "plits") this.type = "default"
     },
     getProducts() {
-      this.$axios
-        .post("products", {
-          pagination: {
-            limit: this.limit,
-            page: this.page,
-          },
-        })
-        .then((res) => {
-          this.products = res.data.product.map((x) => {
-            return { ...x, current: 1 }
+      if (this.$route.query.search) {
+        this.$axios
+          .get("https://back.amanz.kz/api/search?q=" + this.$route.query.search)
+          .then((res) => {
+            this.products = res.data.product.map((x) => {
+              return { ...x, current: 1 }
+            })
+            // this.pagination = res.data.pagination
           })
-          this.pagination = res.data.pagination
+      } else {
+        let filter = this.current_categoryes.map((x) => {
+          return {
+            type: "category_id",
+            value: x.id.toString(),
+          }
         })
+        if (this.price[0] || this.price[1])
+          filter.push({
+            type: "price",
+            value: this.price[0] + "-" + this.price[1],
+          })
+        this.$axios
+          .post("products", {
+            pagination: {
+              limit: this.limit,
+              page: this.page,
+            },
+            filter,
+            // filter: JSON.stringify(filter),
+          })
+          .then((res) => {
+            this.products = res.data.product.map((x) => {
+              return { ...x, current: 1 }
+            })
+            this.pagination = res.data.pagination
+          })
+      }
     },
   },
 }

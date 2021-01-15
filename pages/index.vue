@@ -3,13 +3,37 @@
     <div class="search bg-$blue_d pt-10 pb-12">
       <div class="content flex-col items-start">
         <h1 class="content-title text-white m-0">Найдите нужные лекарства</h1>
-        <label class="search-inp w-full">
+        <label class="search-inp relative w-full">
           <input
+            v-model="search"
             type="text"
-            name="search"
             placeholder="Поиск по названию
           препарата, симптомов болезни и тд."
+            @keyup.enter="
+              $router.push({
+                path: 'products',
+                query: { search: search },
+              })
+            "
           />
+          <div
+            v-if="search_list.length"
+            class="absolute flex flex-col justify-start search-body w-full rounded-20"
+          >
+            <div
+              v-for="item in search_list"
+              :key="item.id"
+              class="truncate justify-start w-full px-8 py-4 text-$blue_d hover:text-white text-left bg-white hover:bg-primary cursor-pointer"
+              @click="
+                $router.push({
+                  path: 'products',
+                  query: { search: item.full_name },
+                })
+              "
+            >
+              {{ item.full_name }}
+            </div>
+          </div>
         </label>
         <div class="search-popular text-white">
           <span>
@@ -35,7 +59,7 @@
           <router-link
             v-for="(slide, i) in slider"
             :key="slide.id"
-            to="/"
+            :to="'/products?categoryes=' + slide.id"
             class="slide w-1/4 flex flex-col items-center justify-start cursor-pointer"
             :class="checkSliderClass('slider', i)"
           >
@@ -167,6 +191,8 @@ export default {
       akzii_current: 1,
       slider_current: 1,
       products_current: 1,
+      search: "",
+      search_list: [],
       akzii: [
         {
           id: 0,
@@ -263,6 +289,18 @@ export default {
       ],
       products: [],
     }
+  },
+  watch: {
+    search(newData) {
+      // if (newData.length >= 3)
+      this.$axios
+        .get("https://back.amanz.kz/api/search?q=" + newData)
+        .then((res) => {
+          this.search_list = res.data.product || []
+        })
+      // else !newData.length
+      // this.search_list = false
+    },
   },
   created() {
     this.getCategories()
@@ -492,5 +530,12 @@ export default {
   & .product_image > img {
     border: 10px solid #454c5b;
   }
+}
+.search-body {
+  max-height: 200px;
+  overflow: auto;
+  bottom: 2.5rem;
+  transform: translateY(100%);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
 }
 </style>

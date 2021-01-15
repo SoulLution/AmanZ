@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _3425ea12 = () => interopDefault(import('..\\pages\\categoryes.vue' /* webpackChunkName: "pages/categoryes" */))
 const _72e8e56e = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
 const _e3fb2222 = () => interopDefault(import('..\\pages\\products.vue' /* webpackChunkName: "pages/products" */))
 const _478aad21 = () => interopDefault(import('..\\pages\\registrate.vue' /* webpackChunkName: "pages/registrate" */))
@@ -28,6 +29,10 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/categoryes",
+    component: _3425ea12,
+    name: "categoryes"
+  }, {
     path: "/login",
     component: _72e8e56e,
     name: "login"
