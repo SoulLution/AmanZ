@@ -528,6 +528,24 @@ export default {
       if (this.type === "default") this.type = "plits"
       else if (this.type === "plits") this.type = "default"
     },
+    getSortName() {
+      let result = {}
+      switch (this.filter.id) {
+        case 1:
+          result = { type: "price", value: "asc" }
+          break
+        case 2:
+          result = { type: "price", value: "desc" }
+          break
+        case 3:
+          result = { type: "name", value: "asc" }
+          break
+        case 4:
+          result = { type: "name", value: "desc" }
+          break
+      }
+      return result
+    },
     getProducts() {
       if (this.$route.query.search) {
         this.$axios
@@ -557,6 +575,7 @@ export default {
               page: this.page,
             },
             filter,
+            sort: this.getSortName(),
             // filter: JSON.stringify(filter),
           })
           .then((res) => {

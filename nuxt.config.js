@@ -4,7 +4,7 @@ module.exports = {
    ** Headers of the page
    */
   server: {
-    host: "185.22.67.23",
+    // host: "185.22.67.23",
     port: 8777,
   },
   head: {
@@ -53,8 +53,8 @@ module.exports = {
    */
   axios: {
     baseURL: "https://back.amanz.kz/api",
-    credentials: true,
-    withCredentials: true,
+    // credentials: true,
+    // withCredentials: true,
   },
   /*
    ** Build configuration

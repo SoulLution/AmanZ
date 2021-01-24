@@ -60,23 +60,16 @@ const createAxiosInstance = axiosOptions => {
   // Extend axios proto
   extendAxiosInstance(axios)
 
+  // Intercept to apply default headers
+  axios.onRequest((config) => {
+    config.headers = { ...axios.defaults.headers.common, ...config.headers }
+  })
+
   // Setup interceptors
 
-  setupCredentialsInterceptor(axios)
   setupProgress(axios)
 
   return axios
-}
-
-const setupCredentialsInterceptor = axios => {
-  // Send credentials only to relative and API Backend requests
-  axios.onRequest(config => {
-    if (config.withCredentials === undefined) {
-      if (!/^https?:\/\//i.test(config.url) || config.url.indexOf(config.baseURL) === 0) {
-        config.withCredentials = true
-      }
-    }
-  })
 }
 
 const setupProgress = (axios) => {
@@ -139,7 +132,7 @@ const setupProgress = (axios) => {
   })
 
   const onProgress = e => {
-    if (!currentRequests) {
+    if (!currentRequests || !e.total) {
       return
     }
     const progress = ((e.loaded * 100) / (e.total * currentRequests))
@@ -181,7 +174,7 @@ export default (ctx, inject) => {
   // Proxy SSR request headers headers
   if (process.server && ctx.req && ctx.req.headers) {
     const reqHeaders = { ...ctx.req.headers }
-    for (const h of ["accept","host","cf-ray","cf-connecting-ip","content-length","content-md5","content-type"]) {
+    for (const h of ["accept","host","x-forwarded-host","cf-ray","cf-connecting-ip","content-length","content-md5","content-type"]) {
       delete reqHeaders[h]
     }
     axiosOptions.headers.common = { ...reqHeaders, ...axiosOptions.headers.common }

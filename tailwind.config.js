@@ -7,6 +7,7 @@
 const colors = {
   gray_d: "#454C5B",
   grey_4: "#F0F0F6",
+  gray_l: "#828282",
   A9: "#A9A9A9",
   primary: "#39C874",
   $blue_d: "#0B0556",
@@ -74,6 +75,7 @@ module.exports = {
       20: "20px",
       27: "27px",
       30: "30px",
+      40: "40px",
       full: "9999px",
       large: "12px",
     },

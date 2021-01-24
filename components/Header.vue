@@ -42,7 +42,7 @@
         <ul>
           <li v-for="link in regist_links" :key="link.src">
             <nuxt-link :to="link.src">
-              <img :src="link.img" />
+              <img v-if="link.img" :src="link.img" />
               <span>{{ link.title }}</span>
             </nuxt-link>
           </li>
@@ -75,6 +75,11 @@ export default {
           title: "Контакты",
           img: "phone.svg",
           src: "/contacts",
+        },
+        {
+          title: "Админ панель",
+          img: "",
+          src: "/admin",
         },
       ],
     }
