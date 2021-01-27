@@ -2,113 +2,97 @@
   {
     "name": "admin",
     "path": "/admin",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\index.vue",
-    "chunkName": "pages/admin/index",
-    "_name": "_27976ff1"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\index.vue",
+    "chunkName": "pages/admin/index"
   },
   {
     "name": "categoryes",
     "path": "/categoryes",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\categoryes.vue",
-    "chunkName": "pages/categoryes",
-    "_name": "_0488100c"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\categoryes.vue",
+    "chunkName": "pages/categoryes"
   },
   {
     "name": "login",
     "path": "/login",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_6564a28b"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\login.vue",
+    "chunkName": "pages/login"
   },
   {
     "name": "products",
     "path": "/products",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\products.vue",
-    "chunkName": "pages/products",
-    "_name": "_c8c27e9c"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\products.vue",
+    "chunkName": "pages/products"
   },
   {
     "name": "registrate",
     "path": "/registrate",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\registrate.vue",
-    "chunkName": "pages/registrate",
-    "_name": "_5f599a24"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\registrate.vue",
+    "chunkName": "pages/registrate"
   },
   {
     "name": "reset",
     "path": "/reset",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\reset.vue",
-    "chunkName": "pages/reset",
-    "_name": "_447f6d71"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\reset.vue",
+    "chunkName": "pages/reset"
   },
   {
     "name": "resetpassword",
     "path": "/resetpassword",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\resetpassword.vue",
-    "chunkName": "pages/resetpassword",
-    "_name": "_36670ce8"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\resetpassword.vue",
+    "chunkName": "pages/resetpassword"
   },
   {
     "name": "verification",
     "path": "/verification",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\verification.vue",
-    "chunkName": "pages/verification",
-    "_name": "_51f746e9"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\verification.vue",
+    "chunkName": "pages/verification"
   },
   {
     "name": "admin-banner",
     "path": "/admin/banner",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\banner.vue",
-    "chunkName": "pages/admin/banner",
-    "_name": "_63f01f1d"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\banner.vue",
+    "chunkName": "pages/admin/banner"
   },
   {
     "name": "admin-categories",
     "path": "/admin/categories",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\categories\\\\index.vue",
-    "chunkName": "pages/admin/categories/index",
-    "_name": "_20385255"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\categories\\\\index.vue",
+    "chunkName": "pages/admin/categories/index"
   },
   {
     "name": "admin-products",
     "path": "/admin/products",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\products\\\\index.vue",
-    "chunkName": "pages/admin/products/index",
-    "_name": "_cb330066"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\products\\\\index.vue",
+    "chunkName": "pages/admin/products/index"
   },
   {
     "name": "admin-subcategories",
     "path": "/admin/subcategories",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\subcategories\\\\index.vue",
-    "chunkName": "pages/admin/subcategories/index",
-    "_name": "_428ed4a7"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\subcategories\\\\index.vue",
+    "chunkName": "pages/admin/subcategories/index"
   },
   {
     "name": "admin-categories-id",
     "path": "/admin/categories/:id",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\categories\\\\_id.vue",
-    "chunkName": "pages/admin/categories/_id",
-    "_name": "_68f0e5fd"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\categories\\\\_id.vue",
+    "chunkName": "pages/admin/categories/_id"
   },
   {
     "name": "admin-products-id",
     "path": "/admin/products/:id",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\products\\\\_id.vue",
-    "chunkName": "pages/admin/products/_id",
-    "_name": "_6d87dd16"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\products\\\\_id.vue",
+    "chunkName": "pages/admin/products/_id"
   },
   {
     "name": "admin-subcategories-id",
     "path": "/admin/subcategories/:id",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\admin\\\\subcategories\\\\_id.vue",
-    "chunkName": "pages/admin/subcategories/_id",
-    "_name": "_4547d4cf"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\subcategories\\\\_id.vue",
+    "chunkName": "pages/admin/subcategories/_id"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\vital\\\\Documents\\\\web\\\\Amanz_server\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_c8860118"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]

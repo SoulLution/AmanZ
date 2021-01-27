@@ -4,22 +4,22 @@ import { normalizeURL, decode } from '@nuxt/ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _27976ff1 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages/admin/index" */))
-const _0488100c = () => interopDefault(import('..\\pages\\categoryes.vue' /* webpackChunkName: "pages/categoryes" */))
-const _6564a28b = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
-const _c8c27e9c = () => interopDefault(import('..\\pages\\products.vue' /* webpackChunkName: "pages/products" */))
-const _5f599a24 = () => interopDefault(import('..\\pages\\registrate.vue' /* webpackChunkName: "pages/registrate" */))
-const _447f6d71 = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages/reset" */))
-const _36670ce8 = () => interopDefault(import('..\\pages\\resetpassword.vue' /* webpackChunkName: "pages/resetpassword" */))
-const _51f746e9 = () => interopDefault(import('..\\pages\\verification.vue' /* webpackChunkName: "pages/verification" */))
-const _63f01f1d = () => interopDefault(import('..\\pages\\admin\\banner.vue' /* webpackChunkName: "pages/admin/banner" */))
-const _20385255 = () => interopDefault(import('..\\pages\\admin\\categories\\index.vue' /* webpackChunkName: "pages/admin/categories/index" */))
-const _cb330066 = () => interopDefault(import('..\\pages\\admin\\products\\index.vue' /* webpackChunkName: "pages/admin/products/index" */))
-const _428ed4a7 = () => interopDefault(import('..\\pages\\admin\\subcategories\\index.vue' /* webpackChunkName: "pages/admin/subcategories/index" */))
-const _68f0e5fd = () => interopDefault(import('..\\pages\\admin\\categories\\_id.vue' /* webpackChunkName: "pages/admin/categories/_id" */))
-const _6d87dd16 = () => interopDefault(import('..\\pages\\admin\\products\\_id.vue' /* webpackChunkName: "pages/admin/products/_id" */))
-const _4547d4cf = () => interopDefault(import('..\\pages\\admin\\subcategories\\_id.vue' /* webpackChunkName: "pages/admin/subcategories/_id" */))
-const _c8860118 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _6863d9e2 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages/admin/index" */))
+const _01cc2a2b = () => interopDefault(import('..\\pages\\categoryes.vue' /* webpackChunkName: "pages/categoryes" */))
+const _4ab815ba = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
+const _f47069ba = () => interopDefault(import('..\\pages\\products.vue' /* webpackChunkName: "pages/products" */))
+const _6369cc55 = () => interopDefault(import('..\\pages\\registrate.vue' /* webpackChunkName: "pages/registrate" */))
+const _29d2e0a0 = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages/reset" */))
+const _84e5648a = () => interopDefault(import('..\\pages\\resetpassword.vue' /* webpackChunkName: "pages/resetpassword" */))
+const _da789e4c = () => interopDefault(import('..\\pages\\verification.vue' /* webpackChunkName: "pages/verification" */))
+const _3cb0f34c = () => interopDefault(import('..\\pages\\admin\\banner.vue' /* webpackChunkName: "pages/admin/banner" */))
+const _53ef4a74 = () => interopDefault(import('..\\pages\\admin\\categories\\index.vue' /* webpackChunkName: "pages/admin/categories/index" */))
+const _44cff07e = () => interopDefault(import('..\\pages\\admin\\products\\index.vue' /* webpackChunkName: "pages/admin/products/index" */))
+const _02d5aad4 = () => interopDefault(import('..\\pages\\admin\\subcategories\\index.vue' /* webpackChunkName: "pages/admin/subcategories/index" */))
+const _135a56ae = () => interopDefault(import('..\\pages\\admin\\categories\\_id.vue' /* webpackChunkName: "pages/admin/categories/_id" */))
+const _23fbfa66 = () => interopDefault(import('..\\pages\\admin\\products\\_id.vue' /* webpackChunkName: "pages/admin/products/_id" */))
+const _4978da7e = () => interopDefault(import('..\\pages\\admin\\subcategories\\_id.vue' /* webpackChunkName: "pages/admin/subcategories/_id" */))
+const _fddf1aba = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -39,67 +39,67 @@ export const routerOptions = {
 
   routes: [{
     path: "/admin",
-    component: _27976ff1,
+    component: _6863d9e2,
     name: "admin"
   }, {
     path: "/categoryes",
-    component: _0488100c,
+    component: _01cc2a2b,
     name: "categoryes"
   }, {
     path: "/login",
-    component: _6564a28b,
+    component: _4ab815ba,
     name: "login"
   }, {
     path: "/products",
-    component: _c8c27e9c,
+    component: _f47069ba,
     name: "products"
   }, {
     path: "/registrate",
-    component: _5f599a24,
+    component: _6369cc55,
     name: "registrate"
   }, {
     path: "/reset",
-    component: _447f6d71,
+    component: _29d2e0a0,
     name: "reset"
   }, {
     path: "/resetpassword",
-    component: _36670ce8,
+    component: _84e5648a,
     name: "resetpassword"
   }, {
     path: "/verification",
-    component: _51f746e9,
+    component: _da789e4c,
     name: "verification"
   }, {
     path: "/admin/banner",
-    component: _63f01f1d,
+    component: _3cb0f34c,
     name: "admin-banner"
   }, {
     path: "/admin/categories",
-    component: _20385255,
+    component: _53ef4a74,
     name: "admin-categories"
   }, {
     path: "/admin/products",
-    component: _cb330066,
+    component: _44cff07e,
     name: "admin-products"
   }, {
     path: "/admin/subcategories",
-    component: _428ed4a7,
+    component: _02d5aad4,
     name: "admin-subcategories"
   }, {
     path: "/admin/categories/:id",
-    component: _68f0e5fd,
+    component: _135a56ae,
     name: "admin-categories-id"
   }, {
     path: "/admin/products/:id",
-    component: _6d87dd16,
+    component: _23fbfa66,
     name: "admin-products-id"
   }, {
     path: "/admin/subcategories/:id",
-    component: _4547d4cf,
+    component: _4978da7e,
     name: "admin-subcategories-id"
   }, {
     path: "/",
-    component: _c8860118,
+    component: _fddf1aba,
     name: "index"
   }],
 

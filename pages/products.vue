@@ -548,14 +548,12 @@ export default {
     },
     getProducts() {
       if (this.$route.query.search) {
-        this.$axios
-          .get("http://localhost:2020/api/search?q=" + this.$route.query.search)
-          .then((res) => {
-            this.products = res.data.product.map((x) => {
-              return { ...x, current: 1 }
-            })
-            // this.pagination = res.data.pagination
+        this.$axios.get("search?q=" + this.$route.query.search).then((res) => {
+          this.products = res.data.product.map((x) => {
+            return { ...x, current: 1 }
           })
+          // this.pagination = res.data.pagination
+        })
       } else {
         let filter = this.current_categoryes.map((x) => {
           return {
@@ -569,7 +567,7 @@ export default {
             value: this.price[0] + "-" + this.price[1],
           })
         this.$axios
-          .post("products", {
+          .post("products/category_id=" + this.$route.query.categoryes, {
             pagination: {
               limit: this.limit,
               page: this.page,

@@ -6,9 +6,9 @@
       <div
         class="banner-header w-full flex flex-col-reverse items-start justify-between px-4 text-gray_d p-7"
       >
-        <h1 class="m-0 font-medium">Добавление новой категории</h1>
+        <h1 class="m-0 font-medium">Изменение товара</h1>
         <nuxt-link
-          to="/admin/categories"
+          to="/admin/products"
           class="flex flex-row items-center mb-5 text-gray_d cursor-pointer"
         >
           <svg
