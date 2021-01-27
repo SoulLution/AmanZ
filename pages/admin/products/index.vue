@@ -69,7 +69,7 @@
             <td class="p-2">{{ product.vendor_code }}</td>
             <td class="p-2">{{ product.remainder }}</td>
             <td class="p-2">{{ product.price }}</td>
-            <td class="p-2">{{ product.sale || "-" }}</td>
+            <td class="p-2">{{ product.discount || "0" }}%</td>
             <td class="p-2">27.01.21 Ергали А.</td>
             <td
               class="p-2"
@@ -156,8 +156,8 @@ export default {
     },
   },
   created() {
-    this.$axios.get("admin/products").then((res) => {
-      this.products = res.data.product.map((x) => {
+    this.$axios.post("admin/products").then((res) => {
+      this.products = res.data.map((x) => {
         return {
           ...x,
           active: false,

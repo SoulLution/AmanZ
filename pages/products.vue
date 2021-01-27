@@ -549,7 +549,7 @@ export default {
     getProducts() {
       if (this.$route.query.search) {
         this.$axios
-          .get("https://back.amanz.kz/api/search?q=" + this.$route.query.search)
+          .get("http://localhost:2020/api/search?q=" + this.$route.query.search)
           .then((res) => {
             this.products = res.data.product.map((x) => {
               return { ...x, current: 1 }
