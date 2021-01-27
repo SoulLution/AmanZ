@@ -90,3 +90,41 @@ html {
     border-color: $primary;
   }
 }
+
+.multiselect,
+.multiselect * {
+  display: block;
+  width: 100%;
+}
+.multiselect__option--highlight {
+  background-color: #39c874 !important;
+}
+.multiselect__option--selected.multiselect__option--highlight {
+  background-color: #ef5755 !important;
+}
+.vue-slider-process {
+  background: #39c874;
+}
+.vue-slider-dot-handle {
+  border: 4px solid #39c874;
+}
+html {
+  .vdpComponent.vdpWithInput > button {
+    font-size: 1rem;
+    width: 135px;
+    height: 1.5rem;
+  }
+  .multiselect__tags {
+    padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .multiselect__select {
+    top: 7.5px;
+  }
+  .multiselect__placeholder,
+  .multiselect__single {
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+}

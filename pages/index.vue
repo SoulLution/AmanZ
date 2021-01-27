@@ -38,9 +38,11 @@
         <div class="search-popular text-white">
           <span>
             Популярные запросы:
-            <nuxt-link to="/">COVID-19</nuxt-link>,
-            <nuxt-link to="/">парацетамол</nuxt-link>,
-            <nuxt-link to="/">противовирусное</nuxt-link>
+            <nuxt-link to="products?search=COVID-19">COVID-19</nuxt-link>,
+            <nuxt-link to="products?search=парацетамол">парацетамол</nuxt-link>,
+            <nuxt-link to="products?search=противовирусное">
+              противовирусное
+            </nuxt-link>
           </span>
         </div>
       </div>
@@ -147,7 +149,7 @@
             <div class="slides pb-5 w-10/12">
               <div
                 v-for="(slide, i) in akzii"
-                :key="slide.id"
+                :key="i"
                 class="slide w-full flex flex-col items-center justify-start"
                 :class="checkSliderClass('akzii', i)"
               >
@@ -293,24 +295,26 @@ export default {
   watch: {
     search(newData) {
       // if (newData.length >= 3)
-      this.$axios
-        .get("https://back.amanz.kz/api/search?q=" + newData)
-        .then((res) => {
-          this.search_list = res.data.product || []
-        })
+      this.$axios.get("search?q=" + newData).then((res) => {
+        this.search_list = res.data.product || []
+      })
       // else !newData.length
       // this.search_list = false
     },
   },
-  created() {
+  async created() {
     this.getCategories()
     this.getProducts()
-    // this.getAkzii()
+    this.getAkzii()
   },
   methods: {
     getAkzii() {
       this.$axios.get("banner").then((res) => {
         this.akzii = res.data.banner
+        while (this.akzii.length <= 8)
+          res.data.banner.forEach((x) => {
+            if (this.akzii.length <= 8) this.akzii.push(x)
+          })
       })
     },
     getProducts() {
@@ -326,12 +330,20 @@ export default {
             return { ...x, current: 1 }
           })
           this.products = products.concat(products)
-          console.log(this.products)
+
+          while (this.products.length <= 8)
+            products.forEach((x) => {
+              if (this.products.length <= 8) this.products.push(x)
+            })
         })
     },
     getCategories() {
       this.$axios.get("category").then((res) => {
         this.slider = res.data.category
+        while (this.slider.length <= 8)
+          res.data.category.forEach((x) => {
+            if (this.slider.length <= 8) this.slider.push(x)
+          })
       })
     },
     checkSliderClass(who, index) {

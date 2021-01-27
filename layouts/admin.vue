@@ -3,11 +3,12 @@
     <div
       class="bg-gray_d flex flex-col fixed top-0 left-0 h-screen w-1/6 py-7 justify-start mb-10"
     >
-      <img src="/logo.png" alt="" />
+      <nuxt-link to="/"><img src="/logo.png" alt="" /></nuxt-link>
       <nav class="flex flex-col w-full mt-10">
         <nuxt-link class="nav-item" to="/admin/banner">
           <svg
             width="24"
+            style="min-width: 24px; min-height: 24px"
             height="24"
             viewBox="0 0 24 24"
             fill="inherit"
@@ -43,6 +44,7 @@
         <nuxt-link class="nav-item" to="/admin/products">
           <svg
             width="24"
+            style="min-width: 24px; min-height: 24px"
             height="24"
             viewBox="0 0 24 24"
             fill="inherit"
@@ -81,13 +83,14 @@
             height="25"
             viewBox="0 0 24 25"
             fill="inherit"
+            style="min-width: 24px; min-height: 24px"
             xmlns="http://www.w3.org/2000/svg"
           >
             <rect
               width="24"
               height="24"
               transform="translate(0 0.5)"
-              fill="inherit"
+              fill="transparent"
             />
             <rect x="2" y="2.5" width="9" height="9" rx="2" fill="inherit" />
             <rect x="13" y="2.5" width="9" height="9" rx="2" fill="inherit" />
@@ -181,7 +184,7 @@ export default {}
   &:hover {
     background: #9fa2b408;
   }
-  &.nuxt-link-exact-active.nuxt-link-active {
+  &.nuxt-link-active {
     color: #39c874;
     background: #9fa2b410;
   }

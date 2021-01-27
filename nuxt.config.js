@@ -3,10 +3,10 @@ module.exports = {
   /*
    ** Headers of the page
    */
-  server: {
-    // host: "185.22.67.23",
-    port: 8777,
-  },
+  // server: {
+  //   // host: "185.22.67.23",
+  //   port: 8777,
+  // },
   head: {
     title: process.env.npm_package_name || "",
     meta: [
@@ -52,7 +52,8 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: "https://back.amanz.kz/api",
+    // baseURL: "https://back.amanz.kz/api",
+    baseURL: "http://localhost:2020/api/",
     // credentials: true,
     // withCredentials: true,
   },
