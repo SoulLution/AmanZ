@@ -7,7 +7,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _6863d9e2 = () => interopDefault(import('..\\pages\\admin\\index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _01cc2a2b = () => interopDefault(import('..\\pages\\categoryes.vue' /* webpackChunkName: "pages/categoryes" */))
 const _4ab815ba = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
-const _f47069ba = () => interopDefault(import('..\\pages\\products.vue' /* webpackChunkName: "pages/products" */))
+const _fded6802 = () => interopDefault(import('..\\pages\\products\\index.vue' /* webpackChunkName: "pages/products/index" */))
 const _6369cc55 = () => interopDefault(import('..\\pages\\registrate.vue' /* webpackChunkName: "pages/registrate" */))
 const _29d2e0a0 = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages/reset" */))
 const _84e5648a = () => interopDefault(import('..\\pages\\resetpassword.vue' /* webpackChunkName: "pages/resetpassword" */))
@@ -19,6 +19,7 @@ const _02d5aad4 = () => interopDefault(import('..\\pages\\admin\\subcategories\\
 const _135a56ae = () => interopDefault(import('..\\pages\\admin\\categories\\_id.vue' /* webpackChunkName: "pages/admin/categories/_id" */))
 const _23fbfa66 = () => interopDefault(import('..\\pages\\admin\\products\\_id.vue' /* webpackChunkName: "pages/admin/products/_id" */))
 const _4978da7e = () => interopDefault(import('..\\pages\\admin\\subcategories\\_id.vue' /* webpackChunkName: "pages/admin/subcategories/_id" */))
+const _3a284227 = () => interopDefault(import('..\\pages\\products\\_id.vue' /* webpackChunkName: "pages/products/_id" */))
 const _fddf1aba = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
@@ -51,7 +52,7 @@ export const routerOptions = {
     name: "login"
   }, {
     path: "/products",
-    component: _f47069ba,
+    component: _fded6802,
     name: "products"
   }, {
     path: "/registrate",
@@ -97,6 +98,10 @@ export const routerOptions = {
     path: "/admin/subcategories/:id",
     component: _4978da7e,
     name: "admin-subcategories-id"
+  }, {
+    path: "/products/:id",
+    component: _3a284227,
+    name: "products-id"
   }, {
     path: "/",
     component: _fddf1aba,

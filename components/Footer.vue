@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <footer class="footer">
     <div class="content flex-col footer-content">
       <div class="flex-row justify-between items-start w-full">
         <div class="flex-col items-start justify-start w-2/12">
@@ -107,7 +107,7 @@
         © 2020 AMANZ
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>

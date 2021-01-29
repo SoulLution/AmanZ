@@ -2,7 +2,7 @@
   <div class="steps flex-row">
     <button
       class="cursor-pointer text-white bg-gray_d w-6 h-6 rounded-lg active:bg-primary outline-none"
-      @click="setValue(-1)"
+      @click="(e) => setValue(e, -1)"
     >
       -
     </button>
@@ -11,7 +11,7 @@
     }}</span>
     <button
       class="cursor-pointer text-white bg-gray_d w-6 h-6 rounded-lg active:bg-primary outline-none"
-      @click="setValue(1)"
+      @click="(e) => setValue(e, 1)"
     >
       +
     </button>
@@ -42,7 +42,8 @@ export default {
     return {}
   },
   methods: {
-    setValue(type) {
+    setValue(e, type) {
+      e.stopPropagation()
       let value = this.value + this.step * type
       if (value >= this.max) value = this.max
       else if (value <= this.min) value = this.min

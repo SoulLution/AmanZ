@@ -3,96 +3,119 @@
     "name": "admin",
     "path": "/admin",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\index.vue",
-    "chunkName": "pages/admin/index"
+    "chunkName": "pages/admin/index",
+    "_name": "_6863d9e2"
   },
   {
     "name": "categoryes",
     "path": "/categoryes",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\categoryes.vue",
-    "chunkName": "pages/categoryes"
+    "chunkName": "pages/categoryes",
+    "_name": "_01cc2a2b"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\login.vue",
-    "chunkName": "pages/login"
+    "chunkName": "pages/login",
+    "_name": "_4ab815ba"
   },
   {
     "name": "products",
     "path": "/products",
-    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\products.vue",
-    "chunkName": "pages/products"
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\products\\\\index.vue",
+    "chunkName": "pages/products/index",
+    "_name": "_fded6802"
   },
   {
     "name": "registrate",
     "path": "/registrate",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\registrate.vue",
-    "chunkName": "pages/registrate"
+    "chunkName": "pages/registrate",
+    "_name": "_6369cc55"
   },
   {
     "name": "reset",
     "path": "/reset",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\reset.vue",
-    "chunkName": "pages/reset"
+    "chunkName": "pages/reset",
+    "_name": "_29d2e0a0"
   },
   {
     "name": "resetpassword",
     "path": "/resetpassword",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\resetpassword.vue",
-    "chunkName": "pages/resetpassword"
+    "chunkName": "pages/resetpassword",
+    "_name": "_84e5648a"
   },
   {
     "name": "verification",
     "path": "/verification",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\verification.vue",
-    "chunkName": "pages/verification"
+    "chunkName": "pages/verification",
+    "_name": "_da789e4c"
   },
   {
     "name": "admin-banner",
     "path": "/admin/banner",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\banner.vue",
-    "chunkName": "pages/admin/banner"
+    "chunkName": "pages/admin/banner",
+    "_name": "_3cb0f34c"
   },
   {
     "name": "admin-categories",
     "path": "/admin/categories",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\categories\\\\index.vue",
-    "chunkName": "pages/admin/categories/index"
+    "chunkName": "pages/admin/categories/index",
+    "_name": "_53ef4a74"
   },
   {
     "name": "admin-products",
     "path": "/admin/products",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\products\\\\index.vue",
-    "chunkName": "pages/admin/products/index"
+    "chunkName": "pages/admin/products/index",
+    "_name": "_44cff07e"
   },
   {
     "name": "admin-subcategories",
     "path": "/admin/subcategories",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\subcategories\\\\index.vue",
-    "chunkName": "pages/admin/subcategories/index"
+    "chunkName": "pages/admin/subcategories/index",
+    "_name": "_02d5aad4"
   },
   {
     "name": "admin-categories-id",
     "path": "/admin/categories/:id",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\categories\\\\_id.vue",
-    "chunkName": "pages/admin/categories/_id"
+    "chunkName": "pages/admin/categories/_id",
+    "_name": "_135a56ae"
   },
   {
     "name": "admin-products-id",
     "path": "/admin/products/:id",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\products\\\\_id.vue",
-    "chunkName": "pages/admin/products/_id"
+    "chunkName": "pages/admin/products/_id",
+    "_name": "_23fbfa66"
   },
   {
     "name": "admin-subcategories-id",
     "path": "/admin/subcategories/:id",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\admin\\\\subcategories\\\\_id.vue",
-    "chunkName": "pages/admin/subcategories/_id"
+    "chunkName": "pages/admin/subcategories/_id",
+    "_name": "_4978da7e"
+  },
+  {
+    "name": "products-id",
+    "path": "/products/:id",
+    "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\products\\\\_id.vue",
+    "chunkName": "pages/products/_id",
+    "_name": "_3a284227"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\Admin\\\\Documents\\\\AmanZ\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_fddf1aba"
   }
 ]

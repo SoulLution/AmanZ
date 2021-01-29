@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <header class="header">
     <div class="content justify-between header-content">
       <div class="flex justify-start">
         <nuxt-link to="/" class="logo">
@@ -19,7 +19,7 @@
                       v-for="category in link.list"
                       :key="category.id"
                       class="py-5 px-4 flex w-full flex-row bg-white hover:bg-primary text-$blue_d hover:text-white"
-                      :to="`products?categoryes=${category.id}`"
+                      :to="`/products?categoryes=${category.id}`"
                     >
                       <div
                         class="mr-8"
@@ -49,7 +49,7 @@
         </ul>
       </nav>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>

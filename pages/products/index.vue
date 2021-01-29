@@ -237,23 +237,17 @@
                     'flex-row': type === 'default',
                   }"
                 >
-                  <img
-                    v-if="product.image_path"
+                  <nuxt-link
+                    :to="`/products/${product.id}`"
                     :class="{
                       'w-full': type === 'plits',
                       'w-1/5 pr-2 border-black border-l border-opacity-25':
                         type === 'default',
                     }"
-                    :src="product.image_path"
-                  />
-                  <img
-                    v-else
-                    :class="{
-                      'w-full': type === 'plits',
-                      'w-1/5': type === 'default',
-                    }"
-                    src="no_image.png"
-                  />
+                  >
+                    <img v-if="product.image_path" :src="product.image_path" />
+                    <img v-else src="no_image.png" />
+                  </nuxt-link>
                   <div
                     class="flex flex-col items-start"
                     :class="{
@@ -318,7 +312,7 @@
                     <input
                       type="submit"
                       class="bg-primary text-white w-full rounded-xl mt-4 mx-2 py-2 text-xs cursor-pointer"
-                      value="Войти"
+                      value="В корзину"
                     />
                   </div>
                 </div>

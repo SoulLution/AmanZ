@@ -92,18 +92,21 @@
           <div class="slides pb-5 w-10/12">
             <div
               v-for="(slide, i) in products"
-              :key="slide.id"
-              class="slide w-1/4 flex flex-col items-center justify-start"
+              :key="i"
+              class="slide w-1/4 flex flex-col items-center justify-start cursor-default"
               :class="checkSliderClass('products', i)"
             >
-              <div class="product_image relative">
+              <nuxt-link
+                class="product_image relative"
+                :to="`/products/${slide.id}`"
+              >
                 <img
                   v-if="slide.image_path"
                   class="rounded-10"
                   :src="slide.image_path"
                 />
                 <img v-else class="rounded-10" src="no_image.png" />
-              </div>
+              </nuxt-link>
               <span
                 class="truncate w-full text-gray_d"
                 style="margin-top: 1rem"
@@ -319,7 +322,7 @@ export default {
     },
     getProducts() {
       this.$axios
-        .post("products", {
+        .post("products/category_id=1", {
           pagination: {
             limit: 10,
             page: 1,

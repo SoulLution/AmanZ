@@ -265,23 +265,26 @@ export default {
         this.$axios
           .get("admin/products/" + this.$route.params.id)
           .then((res) => {
-            this.sub_category = this.categoryes.find(
-              (x) => x.id == res.data.category_id
-            )
-
-            this.$axios.get("admin/subcategory").then((res) => {
-              this.sub_category = res.data.category.find(
-                (x) => x.id == res.data.subcategory_id
-              )
+            this.$axios.get("admin/subcategory").then((res1) => {
+              for (let i = 0; i < res1.data.category.length; i++) {
+                let x = res1.data.category[i]
+                if (x.id == res.data.data.subcategory_id) {
+                  this.sub_category = x
+                  this.category = this.categoryes.find(
+                    (y) => y.id == x.category_id
+                  )
+                  break
+                }
+              }
             })
-            this.file = res.data.product.image_path
-            this.full_name = res.data.product.full_name
-            this.vendor_code = res.data.product.vendor_code
-            this.price = res.data.product.price
-            this.sale = res.data.product.sale
-            this.remainder = res.data.product.remainder
-            this.status = res.data.product.status
-            this.description = res.data.product.description
+            this.file = res.data.data.image_path
+            this.full_name = res.data.data.full_name
+            this.vendor_code = res.data.data.vendor_code
+            this.price = parseInt(res.data.data.price)
+            this.sale = parseInt(res.data.data.sale)
+            this.remainder = res.data.data.remainder
+            this.status = res.data.data.status
+            this.description = res.data.data.description
           })
     },
     sendForm() {
@@ -291,22 +294,20 @@ export default {
         image_path: this.file,
         full_name: this.full_name,
         vendor_code: this.vendor_code,
-        price: this.price,
-        sale: this.sale,
-        remainder: this.remainder,
+        price: parseInt(this.price),
+        sale: parseInt(this.sale),
+        remainder: parseInt(this.remainder),
         status: this.status,
         description: this.description,
       }
       if (this.checkRoute)
-        this.$axios.post("/admin/products/create", data).then(() => {
+        this.$axios.post("/products/create", data).then(() => {
           this.$router.go(-1)
         })
       else
-        this.$axios
-          .put("/admin/products/" + this.$route.params.id, data)
-          .then(() => {
-            this.$router.go(-1)
-          })
+        this.$axios.put("/products/" + this.$route.params.id, data).then(() => {
+          this.$router.go(-1)
+        })
     },
     uploadFile(e) {
       console.log(e)
