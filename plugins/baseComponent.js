@@ -1,5 +1,9 @@
 import Vue from "vue"
 
+import Burger from "../components/Burger"
+
+Vue.component("Burger", Burger)
+
 import steps from "../components/base/steps"
 import pagination from "../components/base/pagination"
 import vRadio from "../components/base/vRadio"

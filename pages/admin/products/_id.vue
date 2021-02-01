@@ -281,7 +281,7 @@ export default {
             this.full_name = res.data.data.full_name
             this.vendor_code = res.data.data.vendor_code
             this.price = parseInt(res.data.data.price)
-            this.sale = parseInt(res.data.data.sale)
+            this.sale = parseInt(res.data.data.discount)
             this.remainder = res.data.data.remainder
             this.status = res.data.data.status
             this.description = res.data.data.description
@@ -295,7 +295,7 @@ export default {
         full_name: this.full_name,
         vendor_code: this.vendor_code,
         price: parseInt(this.price),
-        sale: parseInt(this.sale),
+        discount: parseInt(this.sale),
         remainder: parseInt(this.remainder),
         status: this.status,
         description: this.description,

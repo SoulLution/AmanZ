@@ -1,9 +1,11 @@
 <template>
-  <footer class="footer">
+  <footer class="footer flex flex-row justify-center">
     <div class="content flex-col footer-content">
-      <div class="flex-row justify-between items-start w-full">
-        <div class="flex-col items-start justify-start w-2/12">
-          <div class="footer-title"><img src="logo.png" /></div>
+      <div class="flex-row flex-wrap justify-between items-start w-full">
+        <div class="flex-col items-start justify-start w-1/2 sm:w-2/12">
+          <div class="footer-title">
+            <img class="w-gull h-full" src="/logo.png" />
+          </div>
           <div class="footer-nav flex-col justify-start items-start">
             <a href="tel:+7 777 878 55 66" class="footer-link">
               +7 777 878 55 66
@@ -13,31 +15,41 @@
             </a>
           </div>
         </div>
-        <div class="flex-col items-start justify-start w-2/12">
-          <div class="footer-title">О компании</div>
-          <div class="footer-nav flex-col justify-start items-start">
-            <nuxt-link to="/">Информация</nuxt-link>
-            <nuxt-link to="/">Публичная оферта</nuxt-link>
-            <nuxt-link to="/">Новости</nuxt-link>
+        <div class="flex flex-col sm:flex-row items-start w-1/2 sm:w-5/12">
+          <div class="flex-col items-start justify-start w-full sm:w-2/5">
+            <div class="footer-title">О компании</div>
+            <div class="footer-nav flex-col justify-start items-start">
+              <nuxt-link class="hidden sm:flex" to="/">Информация</nuxt-link>
+              <nuxt-link class="hidden sm:flex" to="/">
+                Публичная оферта
+              </nuxt-link>
+              <nuxt-link class="hidden sm:flex" to="/">Новости</nuxt-link>
+            </div>
+          </div>
+          <div class="flex-col items-start justify-start w-full sm:w-2/5">
+            <div class="footer-title">Условия и <br />безопасность</div>
+            <div class="footer-nav flex-col justify-start items-start">
+              <nuxt-link class="hidden sm:flex" to="/">
+                Рекламодателям
+              </nuxt-link>
+              <nuxt-link class="hidden sm:flex" to="/">
+                Политика конфиденциальности
+              </nuxt-link>
+              <nuxt-link class="hidden sm:flex" to="/">
+                Условия использования
+              </nuxt-link>
+            </div>
+          </div>
+          <div class="flex-col items-start justify-start w-full sm:w-1/5">
+            <div class="footer-title">Помощь</div>
+            <div class="footer-nav flex-col justify-start items-start">
+              <nuxt-link class="hidden sm:flex" to="/">Контакты</nuxt-link>
+              <nuxt-link class="hidden sm:flex" to="/">FAQ</nuxt-link>
+            </div>
           </div>
         </div>
-        <div class="flex-col items-start justify-start w-2/12">
-          <div class="footer-title">Условия и <br />безопасность</div>
-          <div class="footer-nav flex-col justify-start items-start">
-            <nuxt-link to="/">Рекламодателям</nuxt-link>
-            <nuxt-link to="/">Политика конфиденциальности</nuxt-link>
-            <nuxt-link to="/">Условия использования</nuxt-link>
-          </div>
-        </div>
-        <div class="flex-col items-start justify-start w-1/12">
-          <div class="footer-title">Помощь</div>
-          <div class="footer-nav flex-col justify-start items-start">
-            <nuxt-link to="/">Контакты</nuxt-link>
-            <nuxt-link to="/">FAQ</nuxt-link>
-          </div>
-        </div>
-        <div class="flex-col items-start justify-start w-3/12">
-          <div class="footer-title"></div>
+        <div class="flex-col items-start justify-start w-full sm:w-3/12">
+          <div class="hidden sm:flex footer-title"></div>
           <div class="footer-nav flex-row justify-between w-full">
             <a href="" class="footer-link">
               <svg

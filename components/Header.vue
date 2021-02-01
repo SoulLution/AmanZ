@@ -1,11 +1,36 @@
 <template>
-  <header class="header">
+  <header class="header flex flex-row justify-center">
     <div class="content justify-between header-content">
       <div class="flex justify-start">
         <nuxt-link to="/" class="logo">
           <img src="@/static/logo.png" />
         </nuxt-link>
-        <nav class="navigation">
+        <form
+          class="search flex sm:hidden rounded-15 relative items-center"
+          @submit.prevent="goToSearch"
+        >
+          <input
+            v-model="search"
+            type="text"
+            class="pl-3 pr-7 py-2 rounded-15 outline-none"
+            placeholder="Поиск..."
+          />
+          <button type="submit">
+            <img class="absolute" src="/search.png" />
+          </button>
+        </form>
+
+        <div
+          class="burger flex sm:hidden flex-col"
+          :class="{ active: burger }"
+          @click="$store.commit('show/changeBurger', !burger)"
+        >
+          <div class="stick"></div>
+          <div class="stick"></div>
+          <div class="stick"></div>
+        </div>
+
+        <nav class="navigation hidden sm:flex">
           <ul>
             <li v-for="link in links" :key="link.src">
               <nuxt-link class="relative" :to="link.src">
@@ -38,7 +63,7 @@
           </ul>
         </nav>
       </div>
-      <nav class="navigation">
+      <nav class="navigation hidden sm:flex">
         <ul>
           <li v-for="link in regist_links" :key="link.src">
             <nuxt-link :to="link.src">
@@ -57,23 +82,24 @@ export default {
   data() {
     return {
       sidebar: false,
+      search: "",
       regist_links: [
         {
           title: "Войти/Регистрация",
-          img: "sign.svg",
+          img: "/sign.svg",
           src: "/login",
         },
       ],
       links: [
         {
           title: "Разделы",
-          img: "section.svg",
+          img: "/section.svg",
           src: "/categoryes",
           list: [],
         },
         {
           title: "Контакты",
-          img: "phone.svg",
+          img: "/phone.svg",
           src: "/contacts",
         },
         {
@@ -84,8 +110,14 @@ export default {
       ],
     }
   },
+  computed: {
+    burger() {
+      return this.$store.state.show.burger
+    },
+  },
   watch: {
     $route() {
+      this.$store.commit("show/changeBurger", false)
       this.sidebar = false
     },
   },
@@ -93,6 +125,12 @@ export default {
     this.getCategories()
   },
   methods: {
+    goToSearch() {
+      this.$router.push({
+        path: "products",
+        query: { search: this.search },
+      })
+    },
     getCategories() {
       this.$axios.get("category").then((res) => {
         this.links[0].list = res.data.category
@@ -152,6 +190,38 @@ li {
             background-repeat: no-repeat;
           }
         }
+      }
+    }
+  }
+}
+.search {
+  border: 1px solid #a9a9a9;
+  & .absolute {
+    top: 0.5rem;
+    right: 0.75rem;
+  }
+}
+.burger {
+  border-left: 1px solid #ffffff50;
+  padding: 0 0.5rem;
+  height: 70px;
+  margin-left: 12px;
+  justify-content: center;
+  & > .stick {
+    width: 23px;
+    height: 2px;
+    margin-bottom: 5px;
+    background: #0b0556;
+    transition: 0.3s;
+  }
+  &.active {
+    & > .stick {
+      transform: rotate(-45deg) translate(-6px, 9px);
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:last-child {
+        transform: rotate(45deg) translate(-1px, -3px);
       }
     }
   }

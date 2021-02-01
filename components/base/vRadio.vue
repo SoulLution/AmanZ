@@ -72,7 +72,7 @@ input {
     transition: 0.3s;
   }
   &::before {
-    background-color: #ffffff;
+    background-color: transparent;
     // box-shadow: inset 0px 0px 0px 0px #0066ff;
     transition: 0.3s;
   }

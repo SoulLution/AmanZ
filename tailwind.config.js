@@ -16,9 +16,12 @@ const colors = {
 module.exports = {
   theme: {
     fontSize: {
+      normal: "1rem",
       lg: "1.125rem",
       2.5: "2.5rem",
       1.75: "1.75rem",
+      10: "10px",
+      12: "12px",
       14: "14px",
     },
     backgroundColor: (theme) => ({

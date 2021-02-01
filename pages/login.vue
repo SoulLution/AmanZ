@@ -1,11 +1,11 @@
 <template>
   <div class="login items-start">
     <div class="content items-start justify-start flex-col">
-      <h1 class="content-title">Вход в личный кабинет</h1>
+      <h1 class="hidden sm:flex content-title">Вход в личный кабинет</h1>
 
       <div class="sign-body justify-end w-full">
         <form class="form" @submit.prevent="sendForm">
-          <h2 class="form-title">Добро пожаловать!</h2>
+          <h2 class="hidden sm:flex form-title">Добро пожаловать!</h2>
           <h6 class="form-error">
             {{ error }}
           </h6>

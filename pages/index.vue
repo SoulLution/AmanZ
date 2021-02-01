@@ -1,6 +1,6 @@
 <template>
   <div class="index flex-col justify-start pt-0">
-    <div class="search bg-$blue_d pt-10 pb-12">
+    <div class="search bg-$blue_d pt-10 pb-12 hidden sm:flex">
       <div class="content flex-col items-start">
         <h1 class="content-title text-white m-0">Найдите нужные лекарства</h1>
         <label class="search-inp relative w-full">
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <div class="slider bg-white py-8">
+    <div class="slider bg-white py-8 hidden sm:flex">
       <div class="content flex-row justify-between">
         <div
           class="w-1/12 h-full z-10 cursor-pointer"
@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-    <div class="slider bg-white py-8">
+    <div class="slider bg-white py-8 hidden sm:flex">
       <div class="content flex-col items-start">
         <h2 class="text-$blue_d font-bold text-1.75">Новинки</h2>
         <div class="flex flex-row w-full justify-between">
@@ -97,9 +97,15 @@
               :class="checkSliderClass('products', i)"
             >
               <nuxt-link
-                class="product_image relative"
+                class="product_image relative overflow-hidden rounded-10"
                 :to="`/products/${slide.id}`"
               >
+                <div
+                  v-if="slide.discount"
+                  class="sale absolute text-white bg-$error"
+                >
+                  скидка <br />{{ slide.discount }}%
+                </div>
                 <img
                   v-if="slide.image_path"
                   class="rounded-10"
@@ -117,11 +123,27 @@
                 class="my-4 border-t border-b border-grey_4 w-full py-4 flex flex-row"
               >
                 <v-steps v-model="slide.current" :max="slide.remainder" />
-                <span class="whitespace-no-wrap text-14 text-gray_d ml-3">
-                  {{ slide.price }} KZT
+                <span
+                  class="whitespace-no-wrap text-14 text-gray_d ml-3 flex flex-col"
+                >
+                  <span
+                    v-if="slide.discount"
+                    class="opacity-50"
+                    style="text-decoration: line-through"
+                  >
+                    {{ slide.price }} KZT
+                  </span>
+                  <span>
+                    {{ slide.price - slide.price * (slide.discount / 100) }}
+                    KZT
+                  </span>
                 </span>
               </div>
-              <img class="cursor-pointer" src="green_card.svg" />
+              <img
+                class="cursor-pointer"
+                src="green_card.svg"
+                @click="$store.commit('basket/addProduct', slide)"
+              />
             </div>
           </div>
 
@@ -135,7 +157,7 @@
       </div>
     </div>
 
-    <div class="slider bg-white py-8">
+    <div class="slider bg-white py-8 hidden sm:flex">
       <div class="content akzii relative justify-start flex-col items-start">
         <h2 class="text-$blue_d font-bold text-1.75">Акции</h2>
         <div
@@ -184,6 +206,117 @@
         >
           Подробнее
         </button>
+      </div>
+    </div>
+
+    <div class="slider py-8 sm:hidden flex w-full">
+      <div class="content relative justify-start flex-col items-start">
+        <div class="rounded-xl flex flex-col w-full justify-between">
+          <div class="flex flex-row w-full">
+            <div
+              class="w-1/12 h-full z-10 cursor-pointer"
+              @click="changeSlide('akzii', -1)"
+            >
+              <img src="/akzii_arrow.png" style="transform: scale(-1, 1)" />
+            </div>
+
+            <div class="slides pb-5 w-12/12">
+              <div
+                v-for="(slide, i) in akzii"
+                :key="i"
+                class="slide w-full flex flex-col items-center justify-start"
+                :class="checkSliderClass('akzii', i)"
+              >
+                <div class="product_image relative">
+                  <img v-if="slide.image_path" :src="slide.image_path" />
+                  <img v-else src="akzii_default.png" />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="w-1/12 h-full z-10 cursor-pointer"
+              @click="changeSlide('akzii', 1)"
+            >
+              <img src="/akzii_arrow.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-8 sm:hidden flex w-full">
+      <div class="content flex flex-row flex-wrap">
+        <router-link
+          v-for="slide in slider"
+          :key="slide.id"
+          :to="'/products?categoryes=' + slide.id"
+          class="slide w-1/3 mb-5 flex flex-col items-center justify-start cursor-pointer"
+        >
+          <div class="cyrcle-slides">
+            <img :src="slide.image_path" />
+          </div>
+          <span>{{ slide.name }}</span>
+        </router-link>
+        <nuxt-link to="/categoryes" class="flex w-full justify-end">
+          <span class="text-primary border-b border-primary">Показать все</span>
+        </nuxt-link>
+      </div>
+    </div>
+    <div class="py-8 sm:hidden flex w-full">
+      <div class="content flex flex-col items-start">
+        <h3 class="text-$blue_d font-bold mb-5">Популярные товары</h3>
+        <div class="flex flex-row flex-wrap justify-start items-start w-full">
+          <div
+            v-for="(slide, i) in products"
+            :key="i"
+            class="w-1/2 cursor-default px-2"
+          >
+            <nuxt-link
+              class="flex flex-col items-center justify-start w-full bg-white rounded-15 p-2 mb-2"
+              :to="`/products/${slide.id}`"
+            >
+              <div class="relative overflow-hidden rounded-10">
+                <div
+                  v-if="slide.discount"
+                  class="sale absolute text-white bg-$error"
+                >
+                  скидка <br />{{ slide.discount }}%
+                </div>
+                <img
+                  v-if="slide.image_path"
+                  class="rounded-10"
+                  :src="slide.image_path"
+                />
+                <img v-else class="rounded-10" src="no_image.png" />
+              </div>
+              <span
+                class="w-full font-medium text-gray_d"
+                style="margin-top: 1rem"
+              >
+                {{ slide.full_name }}
+              </span>
+              <div
+                class="my-4 border-t border-grey_4 w-full pt-4 flex flex-row"
+              >
+                <span
+                  class="whitespace-no-wrap text-14 text-gray_d ml-3 flex flex-row w-full justify-start"
+                >
+                  <span
+                    v-if="slide.discount"
+                    class="opacity-50 mr-2"
+                    style="text-decoration: line-through"
+                  >
+                    {{ slide.price }} KZT
+                  </span>
+                  <span>
+                    {{ slide.price - slide.price * (slide.discount / 100) }}
+                    KZT
+                  </span>
+                </span>
+              </div>
+            </nuxt-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -334,9 +467,9 @@ export default {
           })
           this.products = products.concat(products)
 
-          while (this.products.length <= 8)
+          while (this.products.length < 8)
             products.forEach((x) => {
-              if (this.products.length <= 8) this.products.push(x)
+              if (this.products.length < 8) this.products.push(x)
             })
         })
     },
@@ -399,12 +532,53 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/colors.scss";
-.index {
-  & > div {
-    margin-bottom: 6.25rem;
-    width: 100%;
-    &.search {
-      margin-bottom: 2.1875rem;
+@media (min-width: 640px) {
+  .index {
+    & > div {
+      margin-bottom: 6.25rem;
+      width: 100%;
+      &.search {
+        margin-bottom: 2.1875rem;
+      }
+    }
+  }
+}
+@media (max-width: 639px) {
+  .slides,
+  .slide {
+    padding: 0 !important;
+  }
+  .__left-1 {
+    left: -100% !important;
+    opacity: 0;
+  }
+  .__behind {
+    left: 100% !important;
+    opacity: 0;
+  }
+  .__right-1 {
+    left: 100% !important;
+    opacity: 0;
+  }
+  .__right-2 {
+    left: 100% !important;
+    opacity: 0;
+  }
+  .__right-3 {
+    left: 100% !important;
+    opacity: 0;
+  }
+  .cyrcle-slides {
+    max-height: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    min-width: 50px;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: white;
+    margin-bottom: 0.25rem;
+    & > img {
+      height: 42px;
     }
   }
 }
@@ -545,6 +719,13 @@ export default {
   & .product_image > img {
     border: 10px solid #454c5b;
   }
+}
+.sale {
+  padding: 1rem 2rem 0.5rem 2rem;
+  text-align: center;
+  left: -2.25rem;
+  top: -0.75rem;
+  transform: rotate(-45deg);
 }
 .search-body {
   max-height: 200px;

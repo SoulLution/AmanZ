@@ -1,11 +1,32 @@
 <template>
   <div class="index flex-col justify-start pt-0">
-    <div class="search bg-$blue_d pt-10 pb-12 w-full">
+    <div class="search hidden sm:flex bg-$blue_d pt-10 pb-12 w-full">
       <div class="content flex-col items-start">
         <h1 class="content-title text-white m-0">
           <span class="text-2.5">{{ title }}</span>
         </h1>
       </div>
+    </div>
+    <div
+      v-if="!$route.query.search"
+      class="sm:hidden flex justify-start w-full p-4 text-14"
+      style="margin-bottom: 0"
+    >
+      <nuxt-link to="/" class="mr-3" style="color: #a9a9a9">Главная</nuxt-link>
+      <span class="mr-3" style="color: #a9a9a9">></span>
+      <nuxt-link to="/categoryes" class="mr-3" style="color: #a9a9a9">
+        Категории
+      </nuxt-link>
+      <span class="mr-3" style="color: #a9a9a9">></span>
+      <div class="text-gray_d">{{ title }}</div>
+    </div>
+
+    <div
+      v-if="!$route.query.search"
+      class="sm:hidden flex justify-start w-full p-4 text-normal font-bold text-$blue_d"
+      style="margin-bottom: 0"
+    >
+      Все в категории {{ title }}
     </div>
     <div class="flex flex-col w-full">
       <div class="content flex-col items-start">
@@ -25,9 +46,9 @@
           >
             <div
               v-if="products.length"
-              class="flex flex-row w-full mb-4 justify-between"
+              class="flex flex-row w-full mb-4 justify-between z-10"
             >
-              <div class="flex flex-row w-full">
+              <div class="flex flex-col sm:flex-row w-full">
                 <div
                   class="flex relative cursor-pointer bg-white py-4 justify-start px-5 text-$blue_d hover:text-primary stroke-current"
                   :class="
@@ -60,14 +81,16 @@
                     />
                   </svg>
                   <div
-                    class="all_filters absolute w-full left-0"
+                    class="flex all_filters absolute w-full left-0"
                     :class="{ active: filter_show }"
                     @click.stop=""
                   >
                     <div
                       class="flex-col p-5 bg-white rounded-b-15 w-full cursor-default"
                     >
-                      <div class="flex flex-row w-full justify-between mb-12">
+                      <div
+                        class="flex flex-col sm:flex-row w-full items-start justify-between mb-12"
+                      >
                         <div
                           v-for="filt in filters"
                           :key="filt.id"
@@ -111,7 +134,7 @@
                 </div>
                 <div
                   v-if="!filter_show"
-                  class="flex flex-row bg-white rounded-15 py-4 justify-start px-5 w-1/3 text-$blue_d hover:text-primary cursor-pointer ml-8"
+                  class="hidden sm:flex flex-row bg-white rounded-15 py-4 justify-start px-5 w-1/3 text-$blue_d hover:text-primary cursor-pointer ml-8"
                   :class="{
                     'stroke-current': type === 'default',
                     'stroke-current fill-current': type === 'plits',
@@ -217,7 +240,8 @@
               class="flex w-full"
               :class="{
                 'flex-row flex-wrap justify-start': type === 'plits',
-                ' flex-col': type === 'default',
+                'flex-row flex-wrap justify-start items-start sm:flex-col':
+                  type === 'default',
               }"
             >
               <div
@@ -227,32 +251,41 @@
                 :class="{
                   'w-1/3': type === 'plits',
                   'pr-10': type === 'plits' && (i + 1) % 3 !== 0,
-                  'w-full h-48': type === 'default',
+                  'pl-2 sm:pl-0': type === 'default' && (i + 1) % 2 === 0,
+                  'pr-2 sm:pr-0': type === 'default' && (i + 1) % 2 !== 0,
+                  'w-1/2  sm:w-full h-48': type === 'default',
                 }"
               >
                 <div
                   class="flex w-full justify-start p-5 bg-white rounded-15"
                   :class="{
                     'flex-col': type === 'plits',
-                    'flex-row': type === 'default',
+                    'flex-col sm:flex-row': type === 'default',
                   }"
                 >
                   <nuxt-link
                     :to="`/products/${product.id}`"
                     :class="{
                       'w-full': type === 'plits',
-                      'w-1/5 pr-2 border-black border-l border-opacity-25':
+                      'w-full sm:w-1/5 border-black border-l border-opacity-25':
                         type === 'default',
                     }"
+                    class="rounded-10 relative overflow-hidden"
                   >
+                    <div
+                      v-if="product.discount"
+                      class="sale absolute text-white bg-$error"
+                    >
+                      скидка <br />{{ product.discount }}%
+                    </div>
                     <img v-if="product.image_path" :src="product.image_path" />
                     <img v-else src="no_image.png" />
                   </nuxt-link>
                   <div
-                    class="flex flex-col items-start"
+                    class="flex flex-col items-start text-12 sm:text-normal"
                     :class="{
                       'w-full': type === 'plits',
-                      'w-3/5 pl-2': type === 'default',
+                      'w-full sm:w-3/5 pl-2': type === 'default',
                     }"
                   >
                     <h2
@@ -273,13 +306,13 @@
                       </span>
                       3 года
                     </div>
-                    <div class="mt-3 block">
+                    <div class="mt-3 hidden sm:block">
                       <span class="color-red text-gray-800">
                         Производитель:
                       </span>
                       Байер Фарма АГ, Германия
                     </div>
-                    <div v-if="type === 'default'" class="mt-3 block">
+                    <div v-if="type === 'default'" class="mt-3 hidden sm:block">
                       <span class="color-red text-gray-800">
                         Действующие вещества:
                       </span>
@@ -290,29 +323,35 @@
                     class="flex flex-col justify-between h-full items-center py-5"
                     :class="{
                       'w-full': type === 'plits',
-                      'w-1/5': type === 'default',
+                      'w-full sm:w-1/5': type === 'default',
                     }"
                   >
                     <div
-                      class="flex w-full"
+                      class="flex w-full justify-center items-center"
                       :class="{
                         'flex-row': type === 'plits',
-                        'flex-col': type === 'default',
+                        'flex-row-reverse sm:flex-col': type === 'default',
                       }"
                     >
                       <v-steps
                         v-model="product.current"
                         :max="product.remainder"
                       />
-                      <div class="flex flex-row justify-between w-full mt-4">
-                        <span>Цена:</span>
-                        <strong>{{ product.price }} KZT</strong>
+                      <div
+                        class="flex flex-row justify-between w-full sm:mt-4 text-10 sm:text-normal"
+                      >
+                        <span class="hidden sm:block">Цена:</span>
+                        <strong>
+                          {{ getPrice(product) }}
+                          KZT
+                        </strong>
                       </div>
                     </div>
                     <input
                       type="submit"
                       class="bg-primary text-white w-full rounded-xl mt-4 mx-2 py-2 text-xs cursor-pointer"
                       value="В корзину"
+                      @click="$store.commit('basket/addProduct', product)"
                     />
                   </div>
                 </div>
@@ -335,7 +374,7 @@
           </div>
           <div
             v-if="!$route.query.search"
-            class="flex flex-col mt-18 top-8 sticky px-4 w-1/3 items-start"
+            class="hidden sm:flex flex-col mt-18 top-8 sticky px-4 w-1/3 items-start"
           >
             <div
               class="flex flex-col w-full bg-white rounded-15 px-3 pb-10 items-start"
@@ -488,6 +527,9 @@ export default {
     }
   },
   methods: {
+    getPrice(product) {
+      return product.price - product.price * (product.discount / 100)
+    },
     getTitle() {
       if (this.$route.query.categoryes)
         this.$axios.get("/category").then((res) => {
@@ -607,6 +649,19 @@ export default {
     &:hover {
       box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
     }
+  }
+}
+.sale {
+  padding: 1rem 2rem 0.5rem 2rem;
+  text-align: center;
+  left: -2.25rem;
+  top: -0.75rem;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 639px) {
+  .w-2\/3 {
+    width: 100%;
   }
 }
 </style>
